@@ -1,0 +1,149 @@
+.profile {
+  display: grid;
+  grid-template-areas: "left center right";
+  grid-template-columns: 0.5fr 1.5fr 1fr;
+}
+
+.profile__avatar {
+  border-radius: 50%;
+  margin-top: 36.25px;
+}
+
+.profile__title {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  margin-right: 18px;
+  margin-top: 62px;
+  margin-bottom: 0;
+}
+
+.profile__subtitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  margin-top: 16px;
+  margin-bottom: 0;
+}
+
+.profile__edit {
+  margin-top: 77px;
+}
+
+.profile__edit-square {
+  border: 1px solid #fff;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.profile__icon-pencil {
+  margin: 7px;
+}
+
+.profile__add {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 75px;
+}
+
+.profile__add-rectangle {
+  border: 2px solid #fff;
+  width: 150px;
+  height: 50px;
+}
+
+.profile__icon-plus {
+  margin-top: 14px;
+  margin-left: 64px;
+  margin-bottom: 14px;
+  margin-right: 64px;
+}
+
+.grid__left {
+  grid-area: left;
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 30px;
+}
+
+.grid__center {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+  margin-bottom: 0;
+  grid-area: center;
+}
+
+.grid__right {
+  grid-area: right;
+}
+
+@media screen and (max-width: 320px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile__title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+
+    margin-right: 10px;
+    margin-top: 20.75px;
+    margin-left: 62px;
+  }
+
+  .profile__subtitle {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    margin-left: 62px;
+  }
+
+  .profile__edit-square {
+    border: 1px solid #fff;
+    box-sizing: border-box;
+    width: 18px;
+    height: 18px;
+  }
+
+  .profile__icon-pencil {
+    margin: 5px;
+  }
+
+  .profile__add {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .profile__add-rectangle {
+    width: 282px;
+  }
+
+  .grid__left {
+    margin: auto;
+  }
+
+  .grid__center {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .profile__icon-plus {
+    margin: 0;
+  }
+}
