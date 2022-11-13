@@ -9,36 +9,12 @@
   grid-gap: 17px 20px;
 }
 
-.card {
-  max-width: 282px;
-}
-
-.card__title {
-  font-family: "Inter", sans-serif;
-  font-weight: 900;
-  font-size: 24px;
-  line-height: 29.05px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.card__info {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #fff;
-  color: #111;
-  height: 75px;
-  border-radius: 0 0 10px 10px;
-}
-.card__image {
-  border-radius: 10px 10px 0px 0px;
-  max-width: 282px;
-  max-height: 282px;
-}
-
 @media screen and (max-width: 320px) {
+  .gallery {
+    min-width: 282px;
+    justify-content: center;
+    margin-left: 19px;
+  }
   .gallery__cards {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
