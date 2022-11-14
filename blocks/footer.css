@@ -6,17 +6,17 @@
   font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 18px;
-  line-height: 27.78px;
+  line-height: 1.5;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (min-width: 320px) and (max-width: 758px) {
   .footer__copyright {
     margin-left: 19px;
   }
 }
 
-@media screen and (min-width: 320px) and (max-width: 758px) {
+@media screen and (min-width: 758px) and (max-width: 1280px) {
   .footer__copyright {
-    margin-left: 100px;
+    margin-left: 19px;
   }
 }
