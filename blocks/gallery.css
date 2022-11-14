@@ -30,6 +30,12 @@
   }
   .gallery__cards {
     grid-template-columns: 1fr 1fr;
-    grid-tempalate-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1500px) {
+  .profile {
+    max-width: 880px;
   }
 }

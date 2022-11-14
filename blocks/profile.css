@@ -78,14 +78,14 @@
   margin-right: 62px;
 }
 
-.grid__left {
+.profile__left {
   grid-area: left;
   display: flex;
   justify-content: flex-start;
   margin-right: 30px;
 }
 
-.grid__center {
+.profile__center {
   display: flex;
   flex-wrap: wrap;
   margin-top: 0;
@@ -93,7 +93,7 @@
   grid-area: center;
 }
 
-.grid__right {
+.profile__right {
   grid-area: right;
 }
 
@@ -156,11 +156,11 @@
     width: 282px;
   }
 
-  .grid__left {
+  .profile__left {
     margin: auto;
   }
 
-  .grid__center {
+  .profile__center {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -185,5 +185,11 @@
 
   .profile__title {
     margin-right: 18px;
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1500px) {
+  .profile {
+    max-width: 880px;
   }
 }
