@@ -41,7 +41,9 @@
   width: 24px;
   height: 24px;
   display: flex;
+  justify-content: center;
   align-items: center;
+  background-color: #111;
 }
 
 .profile__edit-square:hover {
@@ -64,18 +66,12 @@
   border: 2px solid #fff;
   width: 146px;
   height: 46px;
+  background-color: #111;
 }
 
 .profile__add-rectangle:hover {
   border: 2px solid #fff;
   opacity: 0.6;
-}
-
-.profile__icon-plus {
-  margin-top: 12px;
-  margin-left: 62px;
-  margin-bottom: 12px;
-  margin-right: 62px;
 }
 
 .profile__left {
@@ -165,11 +161,6 @@
     justify-content: flex-start;
     align-items: center;
   }
-
-  .profile__icon-plus {
-    margin-top: 14px;
-    margin-left: 134px;
-  }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
@@ -180,7 +171,7 @@
     grid-template-columns: 0.5fr 2fr 1fr;
     margin-left: 20px;
     margin-right: 20px;
-    max-width: 784px;
+    max-width: 779px;
   }
 
   .profile__title {
