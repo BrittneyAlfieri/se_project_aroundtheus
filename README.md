@@ -25,4 +25,4 @@ This project focused on implementing responsive web design.
 ![320px view- project around the us](https://user-images.githubusercontent.com/114301131/201998156-29538df8-9841-4534-9505-a69db753900b.png)
 
 
-Good luck and have fun!
+
