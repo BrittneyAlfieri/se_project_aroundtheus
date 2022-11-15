@@ -18,6 +18,13 @@ This project focused on implementing responsive web design.
 
 **Images**
 
-The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
+![1280px view -project around the us](https://user-images.githubusercontent.com/114301131/201998181-c9ce1d29-638f-44b0-ae09-0d9dfe4d83bd.png)
 
-Good luck and have fun!
+![880px view - project around the us](https://user-images.githubusercontent.com/114301131/201995990-8759cd54-dfa2-4f01-96bc-52abfcf660d8.png)
+
+![320px view- project around the us](https://user-images.githubusercontent.com/114301131/201998156-29538df8-9841-4534-9505-a69db753900b.png)
+
+**Github Pages **
+
+https://brittneyalfieri.github.io/se_project_aroundtheus/
+
