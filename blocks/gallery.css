@@ -5,7 +5,7 @@
 .gallery__cards {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
-  grid-gap: 17px 20px;
+  grid-gap: 17px 17px;
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
@@ -13,10 +13,10 @@
     display: flex;
     min-width: 282px;
     justify-content: center;
+    margin-top: 36px;
   }
   .gallery__cards {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
   }
 }
@@ -29,7 +29,6 @@
   }
   .gallery__cards {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
   }
 }
 
