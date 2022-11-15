@@ -43,11 +43,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #111;
+  background-color: transparent;
 }
 
 .profile__edit-square:hover {
-  border: 1px solid #fff;
   opacity: 0.6;
 }
 
@@ -64,13 +63,13 @@
 
 .profile__add-rectangle {
   border: 2px solid #fff;
+  border-radius: 2px;
   width: 146px;
   height: 46px;
-  background-color: #111;
+  background-color: transparent;
 }
 
 .profile__add-rectangle:hover {
-  border: 2px solid #fff;
   opacity: 0.6;
 }
 
@@ -106,23 +105,19 @@
   }
 
   .profile__title {
-    font-family: "Inter";
     font-style: normal;
     font-weight: 500;
     font-size: 22px;
     line-height: 1.2;
-
     margin-top: 26px;
     margin-left: 43px;
   }
 
   .profile__subtitle {
-    font-family: "Inter";
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
-
     margin-top: 14px;
     margin-left: auto;
     margin-right: auto;
