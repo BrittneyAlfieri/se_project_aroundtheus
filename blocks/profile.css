@@ -120,9 +120,6 @@
     margin-top: 26px;
     margin-left: 43px;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
     max-width: 196px;
   }
 
@@ -133,9 +130,6 @@
     margin-left: auto;
     margin-right: auto;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
     max-width: 282px;
   }
 
