@@ -15,30 +15,29 @@
 
 .modal__close {
   position: absolute;
-  right: 376px;
-  left: 430px;
-  bottom: 325px;
+  top: 160px;
+  padding-left: 432px;
   background-color: transparent;
   width: 40px;
   height: 40px;
   border: none;
-  padding: 0;
 }
 
 .modal__container {
-  position: fixed;
-  top: 22.5%;
-  left: 33.5%;
-  max-width: 430px;
-  min-height: 330px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 195px;
+  width: 430px;
+  height: 330px;
   background-color: #fff;
   z-index: 2;
   border-radius: 10px;
 }
 
 .modal__title {
-  margin-left: 36px;
-  margin-right: 34px;
+  margin-left: 35px;
+  margin-right: 35px;
   margin-top: 36px;
   margin-bottom: 0;
   min-width: 358px;
@@ -52,7 +51,8 @@
 }
 
 .modal__name {
-  margin-left: 36px;
+  margin-left: 35px;
+  margin-right: 35px;
   margin-top: 54px;
   padding-bottom: 13px;
   border-top: none;
@@ -69,7 +69,8 @@
 }
 
 .modal__description {
-  margin-left: 36px;
+  margin-left: 35px;
+  margin-right: 35px;
   margin-top: 30px;
   padding-bottom: 13px;
   border-top: none;
@@ -86,10 +87,9 @@
 }
 
 .modal__button {
-  position: absolute;
-  left: 36px;
-  right: 36px;
-  top: 243px;
+  margin-left: 36px;
+  margin-right: 36px;
+  margin-top: 48px;
   cursor: pointer;
   background-color: #000;
   color: #fff;
@@ -109,29 +109,27 @@
   .modal__container {
     max-width: 282px;
     min-height: 322px;
-    left: 20px;
-    right: 20px;
-
-    top: 123px;
+    margin-top: 123px;
   }
 
   .modal__button {
-    position: absolute;
-    left: 22px;
-    right: 22px;
-    top: 251px;
-    max-width: 238px;
+    min-width: 238px;
+    margin-left: 22px;
+    margin-right: 22px;
+    margin-top: 45px;
 
     font-size: 14px;
   }
 
   .modal__description {
-    margin-left: 22px;
+    margin-left: 21px;
+    margin-right: 21px;
     min-width: 238px;
   }
 
   .modal__name {
-    margin-left: 22px;
+    margin-left: 21px;
+    margin-right: 21px;
     margin-top: 75px;
     min-width: 238px;
   }
@@ -144,18 +142,16 @@
     font-size: 18px;
   }
   .modal__close {
-    right: 376px;
-    left: 255px;
-    bottom: 340px;
+    padding-left: 250px;
+    margin: 0;
+    top: 80px;
 
-    background-color: transparent;
-    width: 26px;
-    height: 26px;
-    padding: 0;
+    max-width: 26px;
+    max-height: 26px;
   }
 
   .modal__close-img {
-    max-width: 26px;
-    max-height: 26px;
+    width: 26px;
+    height: 26px;
   }
 }
