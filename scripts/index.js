@@ -30,14 +30,14 @@ const resetModal = document.querySelector(".modal");
 const closeModalButton = document.querySelector(".modal__close");
 
 function openEdit() {
-  resetModal.classList.remove(".modal");
+  resetModal.classList.remove("modal");
 }
 console.log("test");
 
 profileEditOpen.addEventListener("click", openEdit);
 
 function closeEdit() {
-  resetModal.classList.add(".modal");
+  resetModal.classList.add("modal");
 }
 
 closeModalButton.addEventListener("click", closeEdit);
