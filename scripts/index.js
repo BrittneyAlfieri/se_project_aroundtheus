@@ -32,7 +32,7 @@ const closeModalButton = document.querySelector(".modal__close");
 function openEdit() {
   resetModal.classList.remove(".modal");
 }
-console.log(openEdit);
+console.log("test");
 
 profileEditOpen.addEventListener("click", openEdit);
 
