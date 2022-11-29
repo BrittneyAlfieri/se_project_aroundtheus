@@ -1,7 +1,7 @@
 .profile {
   display: grid;
-  grid-template-areas: "left center right";
-  grid-template-columns: 0.5fr 1.5fr 1fr;
+  grid-template-areas: "left name-job button-job right";
+  grid-template-columns: 0.5fr 1.5fr 0.5fr 1fr;
   min-width: 282px;
 }
 
@@ -42,6 +42,7 @@
 }
 
 .profile__edit {
+  grid-area: button-job;
   margin-top: 77px;
   border: 1px solid #fff;
   box-sizing: border-box;
@@ -96,15 +97,15 @@
 .profile__center {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   margin-top: 0;
   margin-bottom: 0;
-  grid-area: center;
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .profile {
+    grid-template-areas: 0.5fr 1fr 0.2fr 2fr;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 320px;
@@ -118,23 +119,25 @@
     font-size: 22px;
     line-height: 1.2;
     margin-top: 26px;
-    margin-left: 43px;
-
+    margin-left: 25px;
+    margin-right: 10px;
     max-width: 196px;
   }
 
   .profile__subtitle {
+    align-self: center;
     font-style: normal;
     font-size: 14px;
     margin-top: 14px;
-    margin-left: auto;
+    margin-left: 100px;
     margin-right: auto;
 
     max-width: 282px;
   }
 
   .profile__edit {
-    margin-top: 26px;
+    margin-top: auto;
+    margin-bottom: auto;
     width: 18px;
     height: 18px;
   }
@@ -142,6 +145,8 @@
   .profile__icon-pencil {
     margin-left: auto;
     margin-right: auto;
+    width: 7px;
+    height: 7px;
   }
 
   .profile__add {
