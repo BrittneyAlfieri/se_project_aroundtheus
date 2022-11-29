@@ -45,7 +45,7 @@
       </section>
       <div class="modal">
         <div class="modal__opened">
-          <form class="modal__container">
+          <form class="modal__container" id="modal-form">
             <button class="modal__close" type="button">
               <img
                 class="modal__close-img"
@@ -54,13 +54,19 @@
               />
             </button>
             <p class="modal__title">Edit profile</p>
-            <input class="modal__name" type="text" placeholder="Name" />
+            <input
+              class="modal__name"
+              type="text"
+              name="title"
+              placeholder="Name"
+            />
             <input
               class="modal__description"
               type="text"
+              name="description"
               placeholder="Description"
             />
-            <button class="modal__button" type="button">Save</button>
+            <button class="modal__button" type="submit">Save</button>
           </form>
         </div>
       </div>

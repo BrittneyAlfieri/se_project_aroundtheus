@@ -25,19 +25,41 @@ const initialCards = [
   },
 ];
 
-const profileEditOpen = document.querySelector(".profile__edit");
-const resetModal = document.querySelector(".modal");
-const closeModalButton = document.querySelector(".modal__close");
+const modalEditOpen = document.querySelector(".profile__edit");
+const modalEditPopup = document.querySelector(".modal");
+const modalEditClose = document.querySelector(".modal__close");
+const modalForm = document.querySelector("#modal-form");
+const modalEditTitle = document.querySelector(".profile__title");
+const modalEditDescription = document.querySelector(".profile__subtitle");
 
-function openEdit() {
-  resetModal.classList.remove("modal");
+const modalTitleInput = modalForm.querySelector(".modal__name");
+const modalDescriptionInput = modalForm.querySelector(".modal__description");
+
+function closePopup() {
+  modalEditPopup.classList.add("modal");
 }
-console.log("test");
 
-profileEditOpen.addEventListener("click", openEdit);
+modalEditClose.addEventListener("click", closePopup);
 
-function closeEdit() {
-  resetModal.classList.add("modal");
+function openPopup() {
+  modalEditPopup.classList.remove("modal");
 }
 
-closeModalButton.addEventListener("click", closeEdit);
+modalEditOpen.addEventListener("click", function () {
+  modalTitleInput.value = modalEditTitle.textContent;
+  modalDescriptionInput.value = modalEditDescription.textContent;
+
+  openPopup();
+});
+
+modalForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const titleValue = event.target.title.value;
+  const descriptionValue = event.target.description.value;
+
+  modalEditTitle.textContent = titleValue;
+  modalEditDescription.textContent = descriptionValue;
+
+  closePopup();
+});
