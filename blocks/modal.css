@@ -2,7 +2,7 @@
   display: none;
 }
 
-.modal__opened {
+.modal_opened {
   display: block;
   position: fixed;
   top: 0;
