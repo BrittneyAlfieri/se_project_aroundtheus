@@ -77,7 +77,7 @@ modalForm.addEventListener("submit", function (event) {
   closePopup();
 });
 
-const cardGallery = document.querySelector(".gallery");
+const cardGallery = document.querySelector(".gallery__cards");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
