@@ -25,40 +25,44 @@ const initialCards = [
   },
 ];
 
-function getCardElement(data) {
-  const cardElement = query.Selector("#card-template").cloneNode(true);
-
-  cardElement.querySelector(".card__info");
-
-  const cardTitle = document.querySelector(".card__title");
-  const cardImage = document.querySelector(".card__image");
-}
-
 const modalEditOpen = document.querySelector(".profile__edit");
-const modalEditPopup = document.querySelector(".modal");
-const modalEditClose = document.querySelector(".modal__close");
+const modalEditPopup = document.querySelector("#edit-modal");
+const modalEditClose = modalEditPopup.querySelector(".modal__close");
 const modalForm = document.querySelector("#modal-form");
 const modalEditTitle = document.querySelector(".profile__title");
 const modalEditDescription = document.querySelector(".profile__subtitle");
-
 const modalTitleInput = modalForm.querySelector(".modal__name");
 const modalDescriptionInput = modalForm.querySelector(".modal__description");
 
-function closePopup() {
-  modalEditPopup.classList.remove("modal_opened");
+const cardAddPopup = document.querySelector("#add-card-modal");
+const cardAddButton = document.querySelector(".profile__add");
+const cardAddCloseButton = cardAddPopup.querySelector(".modal__close");
+
+function closePopup(modal) {
+  modal.classList.remove("modal_opened");
 }
 
-modalEditClose.addEventListener("click", closePopup);
-
-function openPopup() {
-  modalEditPopup.classList.add("modal_opened");
+function openPopup(modal) {
+  modal.classList.add("modal_opened");
 }
 
 modalEditOpen.addEventListener("click", function () {
   modalTitleInput.value = modalEditTitle.textContent;
   modalDescriptionInput.value = modalEditDescription.textContent;
 
-  openPopup();
+  openPopup(modalEditPopup);
+});
+
+modalEditClose.addEventListener("click", function () {
+  closePopup(modalEditPopup);
+});
+
+cardAddButton.addEventListener("click", function () {
+  openPopup(cardAddPopup);
+});
+
+cardAddCloseButton.addEventListener("click", function () {
+  closePopup(cardAddPopup);
 });
 
 modalForm.addEventListener("submit", function (event) {
@@ -71,4 +75,20 @@ modalForm.addEventListener("submit", function (event) {
   modalEditDescription.textContent = descriptionValue;
 
   closePopup();
+});
+
+const cardGallery = document.querySelector(".gallery");
+const cardTemplate =
+  document.querySelector("#card-template").content.firstElementChild;
+
+initialCards.forEach(function (cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitle = cardElement.querySelector(".card__title");
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardTitle.textContent = cardData.name;
+
+  cardGallery.appendChild(cardElement);
 });
