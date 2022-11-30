@@ -74,7 +74,7 @@ modalForm.addEventListener("submit", function (event) {
   modalEditTitle.textContent = titleValue;
   modalEditDescription.textContent = descriptionValue;
 
-  closePopup();
+  closePopup(modalEditPopup);
 });
 
 const cardGallery = document.querySelector(".gallery__cards");
