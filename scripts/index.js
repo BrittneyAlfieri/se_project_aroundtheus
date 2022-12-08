@@ -28,15 +28,17 @@ const initialCards = [
 const modalEditOpen = document.querySelector(".profile__edit");
 const modalEditPopup = document.querySelector("#edit-modal");
 const modalEditClose = modalEditPopup.querySelector(".modal__close");
-const modalForm = document.querySelector("#modal-form");
+const modalForm = document.querySelector("#modal-profile-form");
 const modalEditTitle = document.querySelector(".profile__title");
 const modalEditDescription = document.querySelector(".profile__subtitle");
 const modalTitleInput = modalForm.querySelector(".modal__name");
 const modalDescriptionInput = modalForm.querySelector(".modal__description");
 
 const cardAddPopup = document.querySelector("#add-card-modal");
-const cardAddButton = document.querySelector(".profile__add");
-const cardAddCloseButton = cardAddPopup.querySelector(".modal__close");
+const cardAddButton = document.querySelector("#add-button");
+const cardAddCloseButton = cardAddPopup.querySelector("#close-button");
+const cardAddForm = document.querySelector("#add-card-form");
+const cardbutton = document.querySelector(".card__heart");
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
@@ -44,6 +46,22 @@ function closePopup(modal) {
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+}
+
+function cardHeartButtonActive(card) {
+  card.classList.add("card__heart_active");
+}
+
+function renderCard(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitle = cardElement.querySelector(".card__title");
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+  cardTitle.textContent = cardData.name;
+
+  cardGallery.prepend(cardElement);
 }
 
 modalEditOpen.addEventListener("click", function () {
@@ -77,18 +95,22 @@ modalForm.addEventListener("submit", function (event) {
   closePopup(modalEditPopup);
 });
 
+cardAddForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const title = event.target.title.value;
+  const link = event.target.link.value;
+
+  renderCard({
+    name: title,
+    link: link,
+  });
+  closePopup(cardAddPopup);
+});
+
 const cardGallery = document.querySelector(".gallery__cards");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 initialCards.forEach(function (cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  cardTitle.textContent = cardData.name;
-
-  cardGallery.appendChild(cardElement);
+  renderCard(cardData);
 });

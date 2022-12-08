@@ -35,7 +35,7 @@
             class="profile__icon-pencil"
           />
         </button>
-        <button type="button" class="profile__add">
+        <button type="button" class="profile__add" id="add-button">
           <img
             src="./images/gallery-add-image-plus.svg"
             alt="gallery add image plus"
@@ -45,7 +45,7 @@
       </section>
 
       <div class="modal" id="edit-modal">
-        <form class="modal__container" id="modal-form">
+        <form class="modal__container" id="modal-profile-form">
           <button class="modal__close" type="button">
             <img
               class="modal__close-img"
@@ -72,7 +72,7 @@
 
       <div class="modal" id="add-card-modal">
         <form class="modal__container" id="add-card-form">
-          <button class="modal__close" type="button">
+          <button class="modal__close" id="close-button" type="button">
             <img
               class="modal__close-img"
               src="./images/modal-close.svg"
@@ -99,10 +99,22 @@
         <div class="gallery__cards">
           <template id="card-template">
             <div class="card">
+              <button type="button" class="card__delete">
+                <img
+                  class="card__trashtop-icon"
+                  src="./images/trashcan-top.svg"
+                  alt="top of trash can icon"
+                />
+                <img
+                  class="card__trashbottom-icon"
+                  src="./images/trashcan-bottom.svg"
+                  alt="bottom of trash can icon"
+                />
+              </button>
               <img class="card__image" src="" alt="" />
               <div class="card__info">
                 <h2 class="card__title"></h2>
-                <button type="button" class="card__heart-icon">
+                <button type="button" class="card__heart">
                   <img src="./images/cards-heart-button.svg" alt="heart-icon" />
                 </button>
               </div>
