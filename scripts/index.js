@@ -38,7 +38,7 @@ const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
 const cardAddCloseButton = cardAddPopup.querySelector("#close-button");
 const cardAddForm = document.querySelector("#add-card-form");
-const cardbutton = document.querySelector(".card__heart");
+const cardHeartButton = document.querySelector(".card__heart");
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
