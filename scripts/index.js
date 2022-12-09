@@ -38,7 +38,6 @@ const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
 const cardAddCloseButton = cardAddPopup.querySelector("#close-button");
 const cardAddForm = document.querySelector("#add-card-form");
-const cardHeartButton = document.querySelector(".card__heart");
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
@@ -46,10 +45,6 @@ function closePopup(modal) {
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
-}
-
-function cardHeartButtonActive(card) {
-  card.classList.add("card__heart_active");
 }
 
 function renderCard(cardData) {
@@ -60,6 +55,17 @@ function renderCard(cardData) {
   cardImage.src = cardData.link;
   cardImage.alt = cardData.name;
   cardTitle.textContent = cardData.name;
+
+  const cardHeartButton = cardElement.querySelector(".heart__icon");
+  cardHeartButton.addEventListener("click", function () {
+    cardHeartButton.classList.add("card__heart_active");
+  });
+
+  const cardDeleteButton = cardElement.querySelector(".card__delete");
+  cardDeleteButton.addEventListener("click", function () {
+    const cardItem = cardDeleteButton.closest(".card");
+    cardItem.remove();
+  });
 
   cardGallery.prepend(cardElement);
 }
