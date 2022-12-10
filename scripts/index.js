@@ -39,6 +39,8 @@ const cardAddButton = document.querySelector("#add-button");
 const cardAddCloseButton = cardAddPopup.querySelector("#close-button");
 const cardAddForm = document.querySelector("#add-card-form");
 
+const imagePopup = document.querySelector("#image-modal");
+
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
 }
@@ -47,7 +49,11 @@ function openPopup(modal) {
   modal.classList.add("modal_opened");
 }
 
-function renderCard(cardData) {
+function renderCard(cardElement, container) {
+  container.prepend(cardElement);
+}
+
+function getCardView(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardImage = cardElement.querySelector(".card__image");
@@ -58,7 +64,7 @@ function renderCard(cardData) {
 
   const cardHeartButton = cardElement.querySelector(".heart__icon");
   cardHeartButton.addEventListener("click", function () {
-    cardHeartButton.classList.add("card__heart_active");
+    cardHeartButton.classList.toggle("card__heart_active");
   });
 
   const cardDeleteButton = cardElement.querySelector(".card__delete");
@@ -67,7 +73,23 @@ function renderCard(cardData) {
     cardItem.remove();
   });
 
-  cardGallery.prepend(cardElement);
+  const imagePreview = cardElement.querySelector(".card__image");
+  const imagePreviewClose = document.querySelector("#image-close");
+
+  imagePreview.addEventListener("click", function () {
+    openPopup(imagePopup);
+    const imageElement = document.querySelector(".modal__image");
+    const imageTitle = document.querySelector(".modal__image-title");
+    imageElement.src = cardData.link;
+    imageElement.alt = cardData.name;
+    imageTitle.textContent = cardData.name;
+  });
+
+  imagePreviewClose.addEventListener("click", function () {
+    closePopup(imagePopup);
+  });
+
+  return cardElement;
 }
 
 modalEditOpen.addEventListener("click", function () {
@@ -105,11 +127,12 @@ cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
   const title = event.target.title.value;
   const link = event.target.link.value;
-
-  renderCard({
-    name: title,
-    link: link,
+  const cardView = getCardView({
+    title,
+    link,
   });
+  renderCard(cardView, cardGallery);
+
   closePopup(cardAddPopup);
 });
 
@@ -118,5 +141,6 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 
 initialCards.forEach(function (cardData) {
-  renderCard(cardData);
+  const cardView = getCardView(cardData);
+  renderCard(cardView, cardGallery);
 });
