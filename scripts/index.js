@@ -62,7 +62,7 @@ function getCardView(cardData) {
   cardImage.alt = cardData.name;
   cardTitle.textContent = cardData.name;
 
-  const cardHeartButton = cardElement.querySelector(".heart__icon");
+  const cardHeartButton = cardElement.querySelector(".card__button");
   cardHeartButton.addEventListener("click", function () {
     cardHeartButton.classList.toggle("card__heart_active");
   });

@@ -47,7 +47,8 @@
 }
 
 .card__heart_active {
-  background-color: #000;
+  background-image: url(../images/like-active.svg);
+  background-repeat: no-repeat;
 }
 
 .card__heart_active:hover {
