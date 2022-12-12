@@ -1,37 +1,19 @@
 .modal {
-  display: none;
-}
-
-.modal_opened {
   display: block;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
-
-.modal > .modal__container {
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 2s linear 0.3s, opacity 0.3s linear;
-}
-
-.modal:hover > .modal__container {
-  visibility: visible;
-  opacity: 1;
-  transition-delay: 0s;
-}
-
-.modal > .modal__image-container {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
-.modal:hover > .modal__image-container {
+.modal_opened {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
   visibility: visible;
   opacity: 1;
   transition-delay: 0s;
@@ -155,6 +137,10 @@
   max-height: 75vh;
   max-width: 75vh;
   z-index: 2;
+
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s;
 }
 
 .modal__image-close {
