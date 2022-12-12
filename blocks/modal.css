@@ -137,10 +137,6 @@
   max-height: 75vh;
   max-width: 75vh;
   z-index: 2;
-
-  visibility: visible;
-  opacity: 1;
-  transition-delay: 0s;
 }
 
 .modal__image-close {
