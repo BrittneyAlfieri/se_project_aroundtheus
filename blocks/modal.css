@@ -1,5 +1,5 @@
 .modal {
-  display: block;
+  display: flex;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -16,7 +16,7 @@
   z-index: 1;
   visibility: visible;
   opacity: 1;
-  transition-delay: 0s;
+  transition: visibility 0s, opacity 0.6s;
 }
 
 .modal__close {
