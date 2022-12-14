@@ -8,15 +8,15 @@
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
 }
 
 .modal_opened {
-  display: block;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
   visibility: visible;
   opacity: 1;
   transition: visibility 0s, opacity 0.6s;
+  pointer-events: all;
 }
 
 .modal__close {
