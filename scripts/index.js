@@ -117,8 +117,8 @@ profileForm.addEventListener("submit", function (event) {
   const titleValue = event.target.title.value;
   const descriptionValue = event.target.description.value;
 
-  modalEditTitle.textContent = titleValue;
-  modalEditDescription.textContent = descriptionValue;
+  profileEditTitle.textContent = titleValue;
+  profileEditDescription.textContent = descriptionValue;
 
   closePopup(modalEditPopup);
 });

@@ -108,8 +108,6 @@
   max-width: 358px;
   padding-top: 13px;
   padding-bottom: 13px;
-  visibility: visible;
-  transition: visibility 0s, opacity 0.5s linear;
 
   font-family: "Inter", sans-serif;
   font-style: normal;
