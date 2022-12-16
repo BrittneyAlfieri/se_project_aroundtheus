@@ -125,10 +125,11 @@ profileForm.addEventListener("submit", function (event) {
 
 cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
-  const title = event.target.title.value;
+  const name = event.target.title.value;
   const link = event.target.link.value;
+
   const cardView = getCardView({
-    title,
+    name,
     link,
   });
   renderCard(cardView, cardGallery);
