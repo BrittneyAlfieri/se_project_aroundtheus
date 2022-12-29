@@ -55,18 +55,34 @@
           </button>
           <p class="modal__title">Edit profile</p>
           <input
-            class="modal__name"
+            class="modal__name modal__input modal__input-type_error"
             type="text"
             name="title"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span
+            class="modal__error modal__error_visible"
+            id="modal__name-error"
+          ></span>
           <input
-            class="modal__description"
+            class="modal__description modal__input modal__input-type_error"
             type="text"
             name="description"
             placeholder="Description"
+            minlength="2"
+            maxlength="200"
+            required
           />
-          <button class="modal__button" type="submit">Save</button>
+          <span
+            class="modal__error modal__error_visible"
+            id="modal__description-error"
+          ></span>
+          <button class="modal__button modal__button_disabled" type="submit">
+            Save
+          </button>
         </form>
       </div>
 
@@ -81,18 +97,32 @@
           </button>
           <p class="modal__title">New Place</p>
           <input
-            class="modal__name"
+            class="modal__name modal__input modal__input-type_error"
             type="text"
             name="title"
             placeholder="Title"
+            minlength="1"
+            maxlength="30"
+            required
           />
+          <span
+            class="modal__error modal__error_visible"
+            id="modal__name-card-error"
+          ></span>
           <input
-            class="modal__description"
-            type="text"
+            class="modal__description modal__input modal__input-type_error"
+            type="url"
             name="link"
             placeholder="Image link"
+            required
           />
-          <button class="modal__button" type="submit">Create</button>
+          <span
+            class="modal__error modal__error_visible"
+            id="modal__description-card-error"
+          ></span>
+          <button class="modal__button modal__button_disabled" type="submit">
+            Create
+          </button>
         </form>
       </div>
 
@@ -146,5 +176,6 @@
       <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
     </footer>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>

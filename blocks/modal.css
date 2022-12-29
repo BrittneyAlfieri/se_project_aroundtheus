@@ -97,6 +97,11 @@
   line-height: 1.2;
 }
 
+.modal__error_visible {
+  color: rgb(255, 0, 0);
+  border-bottom: 1px solid rgb(255, 0, 0);
+}
+
 .modal__button {
   margin-left: 36px;
   margin-right: 36px;
