@@ -55,7 +55,7 @@
           </button>
           <p class="modal__title">Edit profile</p>
           <input
-            class="modal__name modal__input modal__input-type_error"
+            class="modal__name modal__input"
             type="text"
             name="title"
             placeholder="Name"
@@ -63,12 +63,9 @@
             maxlength="40"
             required
           />
-          <span
-            class="modal__error modal__error_visible"
-            id="modal__name-error"
-          ></span>
+          <span class="modal__error" id="modal__name-error"></span>
           <input
-            class="modal__description modal__input modal__input-type_error"
+            class="modal__description modal__input"
             type="text"
             name="description"
             placeholder="Description"
@@ -76,13 +73,8 @@
             maxlength="200"
             required
           />
-          <span
-            class="modal__error modal__error_visible"
-            id="modal__description-error"
-          ></span>
-          <button class="modal__button modal__button_disabled" type="submit">
-            Save
-          </button>
+          <span class="modal__error" id="modal__description-error"></span>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
 
@@ -97,7 +89,7 @@
           </button>
           <p class="modal__title">New Place</p>
           <input
-            class="modal__name modal__input modal__input-type_error"
+            class="modal__name modal__input"
             type="text"
             name="title"
             placeholder="Title"
@@ -105,24 +97,16 @@
             maxlength="30"
             required
           />
-          <span
-            class="modal__error modal__error_visible"
-            id="modal__name-card-error"
-          ></span>
+          <span class="modal__error" id="modal__name-card-error"></span>
           <input
-            class="modal__description modal__input modal__input-type_error"
+            class="modal__description modal__input"
             type="url"
             name="link"
             placeholder="Image link"
             required
           />
-          <span
-            class="modal__error modal__error_visible"
-            id="modal__description-card-error"
-          ></span>
-          <button class="modal__button modal__button_disabled" type="submit">
-            Create
-          </button>
+          <span class="modal__error" id="modal__description-card-error"></span>
+          <button class="modal__button" type="submit" disabled>Create</button>
         </form>
       </div>
 

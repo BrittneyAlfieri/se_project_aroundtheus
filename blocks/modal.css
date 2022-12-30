@@ -97,9 +97,13 @@
   line-height: 1.2;
 }
 
+.modal__input_error {
+  color: #ff0000;
+  border-bottom: 1px solid #ff0000;
+}
+
 .modal__error_visible {
-  color: rgb(255, 0, 0);
-  border-bottom: 1px solid rgb(255, 0, 0);
+  color: #ff0000;
 }
 
 .modal__button {
@@ -123,6 +127,14 @@
 
 .modal__button:hover {
   opacity: 0.8;
+}
+
+.modal__button_disabled {
+  color: #000;
+  opacity: 0.2;
+  background-color: #fff;
+  border: 1px solid #000;
+  border-radius: 2px;
 }
 
 .modal__image {
