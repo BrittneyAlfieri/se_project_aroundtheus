@@ -25,6 +25,7 @@ const initialCards = [
   },
 ];
 
+const outsideForm = document.querySelector(".modal");
 const profileEditOpen = document.querySelector(".profile__edit");
 const profileForm = document.querySelector("#modal-profile-form");
 const profileEditTitle = document.querySelector(".profile__title");
@@ -48,6 +49,12 @@ function closePopup(modal) {
 
 function openPopup(modal) {
   modal.classList.add("modal_opened");
+}
+
+function closeKeyHandler(evt) {
+  if (evt.key === "Escape") {
+    closePopup(modalEditPopup, cardAddPopup);
+  }
 }
 
 function renderCard(cardElement, container) {
@@ -99,31 +106,15 @@ cardAddButton.addEventListener("click", function () {
   openPopup(cardAddPopup);
 });
 
-function closeKeyHandler(modalEditPopup, cardAddPopup) {
-  modalEditClose.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      closePopup(modalEditPopup, cardAddPopup);
-    }
-  });
-}
+modalEditClose.addEventListener("keydown", closeKeyHandler);
 
-function closeClickOverlay(modalEditPopup, cardAddPopup) {
-  const outsideForm = document.querySelector(".modal");
+modalEditClose.addEventListener("click", function () {
+  closePopup(modalEditPopup, cardAddPopup);
+});
 
-  outsideForm.addEventListener("click", function () {
-    closePopup(modalEditPopup, cardAddPopup);
-  });
-}
-
-function closeModalAction(modalEditPopup, cardAddPopup) {
-  modalEditClose.addEventListener("click", function () {
-    closePopup(modalEditPopup, cardAddPopup);
-  });
-
-  closeKeyHandler(modalEditPopup, cardAddPopup);
-
-  closeClickOverlay(modalEditPopup, cardAddPopup);
-}
+outsideForm.addEventListener("click", function () {
+  closePopup(modalEditPopup, cardAddPopup);
+});
 
 imagePreviewClose.addEventListener("click", function () {
   closePopup(imagePopup);
@@ -138,7 +129,7 @@ profileForm.addEventListener("submit", function (event) {
   profileEditTitle.textContent = titleValue;
   profileEditDescription.textContent = descriptionValue;
 
-  closeModalAction(modalEditPopup);
+  closePopup(modalEditPopup);
 });
 
 cardAddForm.addEventListener("submit", function (event) {
@@ -152,7 +143,7 @@ cardAddForm.addEventListener("submit", function (event) {
   });
   renderCard(cardView, cardGallery);
 
-  closeModalAction(cardAddPopup);
+  closePopup(cardAddPopup);
 
   cardAddForm.reset();
 });
