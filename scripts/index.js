@@ -64,6 +64,12 @@ function escCardAddForm(evt) {
   }
 }
 
+function escImagePopup(evt) {
+  if (evt.key === "Escape") {
+    closePopup(imagePopup);
+  }
+}
+
 function cardClickOverlay(event) {
   if (event.target.classList.contains("modal")) {
     closePopup(cardAddPopup);
@@ -73,6 +79,12 @@ function cardClickOverlay(event) {
 function profileClickOverlay(event) {
   if (event.target.classList.contains("modal")) {
     closePopup(modalEditPopup);
+  }
+}
+
+function imageClickOverlay(event) {
+  if (event.target.classList.contains("modal")) {
+    closePopup(imagePopup);
   }
 }
 
@@ -129,9 +141,13 @@ document.addEventListener("keydown", escProfileForm);
 
 document.addEventListener("keydown", escCardAddForm);
 
+document.addEventListener("keydown", escImagePopup);
+
 modalEditPopup.addEventListener("click", profileClickOverlay);
 
 cardAddPopup.addEventListener("click", cardClickOverlay);
+
+imagePopup.addEventListener("click", imageClickOverlay);
 
 modalEditClose.addEventListener("click", function () {
   closePopup(modalEditPopup);
