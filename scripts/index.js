@@ -58,6 +58,11 @@ function closeKeyHandler(evt) {
   }
 }
 
+function clickOverlay(event) {
+  if (event.target.closest(".modal__container")) closePopup(modalEditPopup);
+  console.log(clickOverlay);
+}
+
 function renderCard(cardElement, container) {
   container.prepend(cardElement);
 }
@@ -109,11 +114,11 @@ cardAddButton.addEventListener("click", function () {
 
 document.addEventListener("keydown", closeKeyHandler);
 
+document.addEventListener("click", clickOverlay);
+
 modalEditClose.addEventListener("click", function () {
   closePopup(modalEditPopup, cardAddPopup);
 });
-
-document.addEventListener("click", function (evt) {});
 
 imagePreviewClose.addEventListener("click", function () {
   closePopup(imagePopup);

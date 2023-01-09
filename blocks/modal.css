@@ -22,7 +22,7 @@
 .modal__close {
   position: absolute;
   top: 160px;
-  padding-left: 432px;
+  margin-left: 422px;
   background-color: transparent;
   width: 40px;
   height: 40px;
@@ -36,6 +36,7 @@
 
 .modal__container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   margin: 0 auto;
   margin-top: 195px;
@@ -49,7 +50,7 @@
 .modal__title {
   margin-left: 35px;
   margin-right: 35px;
-  margin-top: 36px;
+  margin-top: 24px;
   margin-bottom: 0;
   min-width: 358px;
 
@@ -101,21 +102,23 @@
   border-bottom: 1px solid #ff0000;
 }
 
+.modal__error {
+  margin-top: 5px;
+  margin-left: 35px;
+}
+
 .modal__error_visible {
   font-size: 12px;
   line-height: 1.2;
   font-style: normal;
   font-weight: 400;
   color: #ff0000;
-
-  margin-top: 5px;
-  margin-left: 35px;
 }
 
 .modal__button {
   margin-left: 36px;
   margin-right: 36px;
-  margin-top: 31px;
+  margin-top: 30px;
   cursor: pointer;
   background-color: #000;
   color: #fff;
@@ -141,6 +144,10 @@
   background-color: #fff;
   border: 1px solid #000;
   border-radius: 2px;
+}
+
+.modal__button_disabled:hover {
+  opacity: 0.2;
 }
 
 .modal__image {
@@ -189,13 +196,13 @@
     font-size: 14px;
   }
 
-  .modal__description {
+  .modal__input_description {
     margin-left: 21px;
     margin-right: 21px;
     min-width: 238px;
   }
 
-  .modal__name {
+  .modal__input_name {
     margin-left: 21px;
     margin-right: 21px;
     margin-top: 75px;
