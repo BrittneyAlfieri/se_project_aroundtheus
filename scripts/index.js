@@ -38,7 +38,7 @@ const modalDescriptionInput = profileForm.querySelector(
 
 const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
-const cardAddCloseButton = cardAddPopup.querySelector("#close-button");
+const cardAddCloseButton = cardAddPopup.querySelector("#card-close-button");
 const cardAddForm = document.querySelector("#add-card-form");
 
 const imagePopup = document.querySelector("#image-modal");
@@ -52,15 +52,30 @@ function openPopup(modal) {
   modal.classList.add("modal_opened");
 }
 
-function closeKeyHandler(evt) {
+function escProfileForm(evt) {
   if (evt.key === "Escape") {
-    closePopup(modalEditPopup, cardAddPopup);
+    closePopup(modalEditPopup);
   }
 }
 
-function clickOverlay(event) {
-  if (event.target.closest(".modal__container")) closePopup(modalEditPopup);
-  console.log(clickOverlay);
+function escCardAddForm(evt) {
+  if (evt.key === "Escape") {
+    closePopup(cardAddPopup);
+  }
+}
+
+function cardClickOverlay(event) {
+  if (event.target.classList.contains(".modal")) {
+  } else {
+    closePopup(cardAddPopup);
+  }
+}
+
+function profileClickOverlay(event) {
+  if (event.target.classList.contains(".modal")) {
+  } else {
+    closePopup(modalEditPopup);
+  }
 }
 
 function renderCard(cardElement, container) {
@@ -112,12 +127,20 @@ cardAddButton.addEventListener("click", function () {
   openPopup(cardAddPopup);
 });
 
-document.addEventListener("keydown", closeKeyHandler);
+document.addEventListener("keydown", escProfileForm);
 
-document.addEventListener("click", clickOverlay);
+document.addEventListener("keydown", escCardAddForm);
+
+modalEditPopup.addEventListener("click", profileClickOverlay);
+
+cardAddPopup.addEventListener("click", cardClickOverlay);
 
 modalEditClose.addEventListener("click", function () {
-  closePopup(modalEditPopup, cardAddPopup);
+  closePopup(modalEditPopup);
+});
+
+cardAddCloseButton.addEventListener("click", function () {
+  closePopup(cardAddPopup);
 });
 
 imagePreviewClose.addEventListener("click", function () {
