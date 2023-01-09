@@ -65,16 +65,15 @@ function escCardAddForm(evt) {
 }
 
 function cardClickOverlay(event) {
-  if (event.target.classList.contains(".modal")) {
+  if (event.target.classList.contains("modal")) {
     closePopup(cardAddPopup);
   }
 }
 
 function profileClickOverlay(event) {
-  if (event.target.classList.contains(".modal")) {
+  if (event.target.classList.contains("modal")) {
     closePopup(modalEditPopup);
   }
-  console.log(profileClickOverlay);
 }
 
 function renderCard(cardElement, container) {
