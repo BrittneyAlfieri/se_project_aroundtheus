@@ -19,7 +19,7 @@
   pointer-events: all;
 }
 
-.modal__close {
+.modal__card-close {
   position: absolute;
   top: 160px;
   margin-left: 422px;
@@ -30,6 +30,16 @@
   cursor: pointer;
 }
 
+.modal__profile-close {
+  position: absolute;
+  top: 160px;
+  margin-left: 422px;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
 .modal__close:hover {
   opacity: 0.6;
 }
@@ -168,7 +178,7 @@
 }
 
 .modal__image-close {
-  margin-left: 76vh;
+  margin-left: 75vh;
   background-color: transparent;
   width: 40px;
   height: 40px;
