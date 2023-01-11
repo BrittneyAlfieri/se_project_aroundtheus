@@ -49,7 +49,7 @@ const imagePreviewClose = document.querySelector("#image-close");
 
 function closePopup(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown,", closeByEscape);
+  document.removeEventListener("keydown", closeByEscape);
 }
 
 function openPopup(modal) {

@@ -35,14 +35,13 @@ function setEventListeners(formElement, options) {
   const { inputSelector, submitButtonSelector, inactiveButtonClass } = options;
   const inputElements = [...formElement.querySelectorAll(inputSelector)];
   const submitButton = formElement.querySelector(submitButtonSelector);
+  formElement.addEventListener("reset", () => {
+    disableButton(submitButton, inactiveButtonClass);
+  });
   inputElements.forEach((inputElement) => {
     inputElement.addEventListener("input", (event) => {
       checkInputValidity(formElement, inputElement, options);
       toggleButtonState(inputElements, submitButton, options);
-    });
-
-    formElement.addEventListener("reset", () => {
-      disableButton(submitButton, inactiveButtonClass);
     });
   });
 }
