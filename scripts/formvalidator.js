@@ -1,5 +1,6 @@
 class FormValidator {
   constructor(config, formElement) {
+    this._form = formElement;
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
@@ -8,8 +9,6 @@ class FormValidator {
 
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
-
-    this._form = formElement;
   }
 
   _showInputError(inputElement) {
@@ -40,30 +39,32 @@ class FormValidator {
     this._submitButton.disabled = false;
   }
 
-  _toggleButtonState(submitButton, inactiveButtonClass) {
-    if (hasInvalidInput(inputElements)) {
-      disableButton(submitButton, inactiveButtonClass);
-      return;
+  _toggleButtonState() {
+    if (this._hasValidInput()) {
+      this._enableButton();
+    } else {
+      this._disableButton();
     }
-    enableButton(submitButton, inactiveButtonClass);
   }
 
-  _hasInvalidInput(inputElements) {
-    return !inputElements.every((inputElement) => inputElement.validity.valid);
+  _hasValidInput() {
+    return this._inputElements.every(
+      (inputElement) => inputElement.validity.valid
+    );
   }
 
   _setEventListeners() {
-    this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
+    this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
 
     this._form.addEventListener("reset", () => {
-      disableButton(submitButton, inactiveButtonClass);
+      this._disableButton();
     });
 
-    inputElements.forEach((inputElement) => {
+    this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (event) => {
-        checkInputValidity(this._form, inputElement, config);
-        toggleButtonState(inputElements, submitButton, config);
+        this._hasValidInput(inputElement);
+        this._toggleButtonState();
       });
     });
   }
@@ -73,7 +74,7 @@ class FormValidator {
       evt.preventDefault();
     });
 
-    setEventListeners(formElement, options);
+    this._setEventListeners();
   }
 }
 

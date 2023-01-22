@@ -7,22 +7,29 @@ class Card {
   }
 
   _getTemplate() {
-    return document
+    const cardElement = document
       .querySelector(this._cardSelector)
       .content.querySelector(".card")
       .cloneNode(true);
+
+    return cardElement;
   }
 
-  getView() {
+  getCardView() {
     this._element = this._getTemplate();
-    this._setEventlisteners();
+    this._setEventListenersCard();
+
+    const cardImage = cardElement.querySelector(".card__image");
+    const cardTitle = cardElement.querySelector(".card__title");
 
     cardImage.src = this._link;
     cardImage.alt = this._name;
     cardTitle.textContent = this._name;
+
+    return this.element;
   }
 
-  _setEventListeners() {
+  _setEventListenersCard() {
     cardHeartButton.addEventListener("click", _handleLikeButton(this));
     cardDeleteButton.addEventListener("click", _handleDeleteButton(this));
     cardImage.addEventListener("click", _handleImagePreview(this));
@@ -56,7 +63,7 @@ class Card {
 
   _renderCard(cardData, cardSelector) {
     const card = new Card(cardData, cardSelector);
-    container.prepend(card.getView());
+    container.prepend(card.this._getCardView());
   }
 }
 
