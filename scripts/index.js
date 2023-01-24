@@ -43,7 +43,7 @@ const closeButtons = document.querySelectorAll(".modal__close");
 
 const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
-
+const imagePopup = document.querySelector("#image-modal");
 const cardAddForm = document.querySelector("#add-card-form");
 
 popups.forEach((popup) => {

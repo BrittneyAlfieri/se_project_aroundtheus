@@ -1,9 +1,12 @@
+import { openPopup, closeByEscape } from "./utils.js";
+
 class Card {
   constructor(cardData, cardSelector) {
     this._name = cardData.name;
     this._link = cardData.link;
-
     this._cardSelector = cardSelector;
+
+    imagePopup = document.querySelector("#image-modal");
   }
 
   _getTemplate() {
@@ -51,7 +54,10 @@ class Card {
   }
 
   _handleImagePreview() {
-    this._element.querySelector(".modal__image").src = this._link;
+    document.querySelector(".modal__image").src = this._link;
+
+    openPopup(imagePopup);
+
     this._element.querySelector(".modal__image-title").textContent = this._name;
   }
 }
