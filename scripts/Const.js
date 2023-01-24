@@ -41,6 +41,8 @@ const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
 const imagePopup = document.querySelector("#image-modal");
 const cardAddForm = document.querySelector("#add-card-form");
+const cardNameValue = cardAddPopup.querySelector(".modal__input_name");
+const cardLinkValue = cardAddPopup.querySelector(".modal__input_description");
 
 export {
   initialCards,
@@ -57,4 +59,6 @@ export {
   cardAddButton,
   cardAddForm,
   imagePopup,
+  cardNameValue,
+  cardLinkValue,
 };

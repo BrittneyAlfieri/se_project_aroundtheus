@@ -15,6 +15,8 @@ import {
   cardAddButton,
   cardAddForm,
   initialCards,
+  cardNameValue,
+  cardLinkValue,
 } from "./Const.js";
 
 popups.forEach((popup) => {
@@ -56,6 +58,8 @@ profileForm.addEventListener("submit", function (event) {
 
 cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
+
+  const cardData = { name: cardNameValue.value, link: cardLinkValue.value };
 
   renderCard(cardData);
 

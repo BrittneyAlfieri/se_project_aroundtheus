@@ -23,21 +23,21 @@ class Card {
     this._element.querySelector(".card__image").src = this._link;
     this._element.querySelector(".card__title").textContent = this._name;
 
-    return this.element;
+    return this._element;
   }
 
   _setEventListenersCard() {
     this._element
       .querySelector(".card__delete")
-      .addEventListener("click", this._handleDeleteButton(this));
+      .addEventListener("click", () => this._handleDeleteButton(this));
 
     this._element
       .querySelector(".card__button")
-      .addEventListener("click", this._handleLikeButton(this));
+      .addEventListener("click", () => this._handleLikeButton(this));
 
     this._element
       .querySelector(".card__image")
-      .addEventListener("click", this._handleImagePreview(this));
+      .addEventListener("click", () => this._handleImagePreview(this));
   }
 
   _handleLikeButton() {
