@@ -18,52 +18,41 @@ class Card {
   getCardView() {
     this._element = this._getTemplate();
     this._setEventListenersCard();
-
-    const cardImage = cardElement.querySelector(".card__image");
-    const cardTitle = cardElement.querySelector(".card__title");
-
-    cardImage.src = this._link;
-    cardImage.alt = this._name;
-    cardTitle.textContent = this._name;
+    this._element.querySelector(".card__image").src = this._link;
+    this._element.querySelector(".card__title").textContent = this._name;
 
     return this.element;
   }
 
   _setEventListenersCard() {
-    cardHeartButton.addEventListener("click", _handleLikeButton(this));
-    cardDeleteButton.addEventListener("click", _handleDeleteButton(this));
-    cardImage.addEventListener("click", _handleImagePreview(this));
+    this._element
+      .querySelector(".card__delete")
+      .addEventListener("click", this._handleDeleteButton(this));
+
+    this._element
+      .querySelector(".card__button")
+      .addEventListener("click", this._handleLikeButton(this));
+
+    this._element
+      .querySelector(".card__image")
+      .addEventListener("click", this._handleImagePreview(this));
   }
 
   _handleLikeButton() {
-    const cardHeartButton = cardElement.querySelector(".card__button");
-    cardHeartButton.addEventListener("click", () => {
-      cardHeartButton.classList.toggle("card__heart_active");
-    });
+    this._element
+      .querySelector(".card__button")
+      .classList.toggle("card__heart_active");
   }
 
   _handleDeleteButton() {
-    const cardDeleteButton = cardElement.querySelector(".card__delete");
-    cardDeleteButton.addEventListener("click", function () {
-      const cardItem = cardDeleteButton.closest(".card");
-      cardItem.remove();
-    });
+    this._element.querySelector(".card__delete");
+    const cardItem = this._element.closest(".card");
+    cardItem.remove();
   }
 
   _handleImagePreview() {
-    cardImage.addEventListener("click", function () {
-      openPopup(imagePopup);
-      const imageElement = document.querySelector(".modal__image");
-      const imageTitle = document.querySelector(".modal__image-title");
-      imageElement.src = cardData.link;
-      imageElement.alt = cardData.name;
-      imageTitle.textContent = cardData.name;
-    });
-  }
-
-  _renderCard(cardData, cardSelector) {
-    const card = new Card(cardData, cardSelector);
-    container.prepend(card.this._getCardView());
+    this._element.querySelector(".modal__image").src = this._link;
+    this._element.querySelector(".modal__image-title").textContent = this._name;
   }
 }
 

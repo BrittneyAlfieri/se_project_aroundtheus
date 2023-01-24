@@ -1,8 +1,6 @@
 import FormValidator from "./FormValidator.js";
-
 import Card from "./Card.js";
-
-//import * as utils from "./utils";
+import { closePopup, openPopup, closeByEscape } from "./utils.js";
 
 const initialCards = [
   {
@@ -36,75 +34,17 @@ const profileForm = document.querySelector("#modal-profile-form");
 const profileEditTitle = document.querySelector(".profile__title");
 const profileEditDescription = document.querySelector(".profile__subtitle");
 const modalEditPopup = document.querySelector("#edit-modal");
-const modalEditClose = modalEditPopup.querySelector(".modal__close");
 const modalTitleInput = profileForm.querySelector(".modal__input_name");
 const modalDescriptionInput = profileForm.querySelector(
   ".modal__input_description"
 );
-
 const popups = document.querySelectorAll(".modal");
 const closeButtons = document.querySelectorAll(".modal__close");
 
 const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
-const cardAddCloseButton = cardAddPopup.querySelector("#card-close-button");
+
 const cardAddForm = document.querySelector("#add-card-form");
-
-const imagePopup = document.querySelector("#image-modal");
-const imagePreviewClose = document.querySelector("#image-close");
-
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", closeByEscape);
-}
-
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", closeByEscape);
-}
-
-function closeByEscape(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector(".modal_opened");
-    closePopup(openedPopup);
-  }
-}
-
-function renderCard(cardElement, container) {
-  container.prepend(cardElement);
-}
-
-function getCardView(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
-  cardImage.src = cardData.link;
-  cardImage.alt = cardData.name;
-  cardTitle.textContent = cardData.name;
-
-  const cardHeartButton = cardElement.querySelector(".card__button");
-  cardHeartButton.addEventListener("click", function () {
-    cardHeartButton.classList.toggle("card__heart_active");
-  });
-
-  const cardDeleteButton = cardElement.querySelector(".card__delete");
-  cardDeleteButton.addEventListener("click", function () {
-    const cardItem = cardDeleteButton.closest(".card");
-    cardItem.remove();
-  });
-
-  cardImage.addEventListener("click", function () {
-    openPopup(imagePopup);
-    const imageElement = document.querySelector(".modal__image");
-    const imageTitle = document.querySelector(".modal__image-title");
-    imageElement.src = cardData.link;
-    imageElement.alt = cardData.name;
-    imageTitle.textContent = cardData.name;
-  });
-
-  return cardElement;
-}
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
@@ -146,28 +86,21 @@ profileForm.addEventListener("submit", function (event) {
 cardAddForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const name = event.target.title.value;
-  const link = event.target.link.value;
-
-  const cardView = getCardView({
-    name,
-    link,
-  });
-  renderCard(cardView, cardGallery);
+  renderCard(cardData);
 
   closePopup(cardAddPopup);
 
   cardAddForm.reset();
 });
 
-const cardGallery = document.querySelector(".gallery__cards");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
-
-initialCards.forEach(function (cardData) {
-  const cardView = getCardView(cardData);
-  renderCard(cardView, cardGallery);
+initialCards.forEach((cardData) => {
+  renderCard(cardData);
 });
+
+function renderCard(cardData) {
+  const card = new Card(cardData, "#card-template");
+  document.querySelector(".gallery__cards").prepend(card.getCardView());
+}
 
 const validationConfig = {
   inputSelector: ".modal__input",
