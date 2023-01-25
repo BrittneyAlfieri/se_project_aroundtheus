@@ -17,7 +17,7 @@ import {
   initialCards,
   cardNameValue,
   cardLinkValue,
-} from "./Const.js";
+} from "./constants.js";
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {

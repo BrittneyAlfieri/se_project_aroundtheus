@@ -39,8 +39,8 @@ class FormValidator {
     this._submitButton.disabled = false;
   }
 
-  _toggleButtonState() {
-    if (this._toggleInputError()) {
+  _toggleButtonState(inputEl) {
+    if (this._toggleInputError(inputEl)) {
       this._enableButton();
     } else {
       this._disableButton();
@@ -48,7 +48,6 @@ class FormValidator {
   }
 
   _toggleInputError(inputElement) {
-    console.log(inputElement);
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
     } else {
@@ -67,7 +66,7 @@ class FormValidator {
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (event) => {
         this._toggleInputError(inputElement);
-        this._toggleButtonState();
+        this._toggleButtonState(inputElement);
       });
     });
   }
