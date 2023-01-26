@@ -20,8 +20,9 @@ class Card {
   getCardView() {
     this._element = this._getTemplate();
     this._setEventListenersCard();
-    this._element.querySelector(".card__image").src = this._link;
-    this._element.querySelector(".card__image").alt = `Photo of ${this._name}`;
+    const imageElement = this._element.querySelector(".card__image");
+    imageElement.src = this._link;
+    imageElement.alt = `Photo of ${this._name}`;
     this._element.querySelector(".card__title").textContent = this._name;
 
     return this._element;
@@ -49,14 +50,15 @@ class Card {
 
   _handleDeleteButton = () => {
     this._element.querySelector(".card__delete");
-    const cardItem = this._element.closest(".card");
-    cardItem.remove();
+    this._element.closest(".card");
+    this._element.remove();
   };
 
   _handleImagePreview() {
     openPopup(imagePopup);
-    document.querySelector(".modal__image").src = this._link;
-    document.querySelector(".modal__image").alt = `Photo of ${this._name}`;
+    const modalImageElement = document.querySelector(".modal__image");
+    modalImageElement.src = this._link;
+    modalImageElement.alt = `Photo of ${this._name}`;
     document.querySelector(".modal__image-title").textContent = this._name;
   }
 }
