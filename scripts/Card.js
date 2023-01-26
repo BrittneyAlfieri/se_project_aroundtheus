@@ -49,8 +49,6 @@ class Card {
   }
 
   _handleDeleteButton = () => {
-    this._element.querySelector(".card__delete");
-    this._element.closest(".card");
     this._element.remove();
   };
 
