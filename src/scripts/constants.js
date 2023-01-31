@@ -44,8 +44,6 @@ const cardAddForm = document.querySelector("#add-card-form");
 const cardNameValue = cardAddPopup.querySelector(".modal__input_name");
 const cardLinkValue = cardAddPopup.querySelector(".modal__input_description");
 
-const logoImage = document.getElementById("logo-aroundtheus");
-
 export {
   initialCards,
   profileEditOpen,
@@ -63,5 +61,4 @@ export {
   imagePopup,
   cardNameValue,
   cardLinkValue,
-  logoImage,
 };
