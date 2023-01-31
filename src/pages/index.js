@@ -1,6 +1,6 @@
-import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
-import { closePopup, openPopup, closeByEscape } from "./utils.js";
+import FormValidator from "../scripts/FormValidator";
+import Card from "../scripts/Card.js";
+import { closePopup, openPopup, closeByEscape } from "../scripts/utils";
 import {
   profileEditOpen,
   profileForm,
@@ -17,7 +17,7 @@ import {
   initialCards,
   cardNameValue,
   cardLinkValue,
-} from "./constants.js";
+} from "../scripts/constants.js";
 
 popups.forEach((popup) => {
   popup.addEventListener("mousedown", (evt) => {
