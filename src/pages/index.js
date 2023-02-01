@@ -1,3 +1,4 @@
+import "../pages/index.css";
 import FormValidator from "../scripts/FormValidator";
 import Card from "../scripts/Card.js";
 import { closePopup, openPopup, closeByEscape } from "../scripts/utils";
@@ -19,19 +20,19 @@ import {
   cardLinkValue,
 } from "../scripts/constants.js";
 
-popups.forEach((popup) => {
-  popup.addEventListener("mousedown", (evt) => {
-    if (evt.target.classList.contains("modal_opened")) {
-      closePopup(popup);
-    }
-  });
-});
+// popups.forEach((popup) => {
+//   popup.addEventListener("mousedown", (evt) => {
+//     if (evt.target.classList.contains("modal_opened")) {
+//       closePopup(popup);
+//     }
+//   });
+// });
 
-closeButtons.forEach((button) => {
-  const popup = button.closest(".modal");
+// closeButtons.forEach((button) => {
+//   const popup = button.closest(".modal");
 
-  button.addEventListener("click", () => closePopup(popup));
-});
+//   button.addEventListener("click", () => closePopup(popup));
+// });
 
 profileEditOpen.addEventListener("click", function () {
   modalTitleInput.value = profileEditTitle.textContent;

@@ -8,7 +8,7 @@
   <body class="page">
     <header class="header">
       <img
-        id="logo-aroundtheus"
+        src="<%=require(`./images/logo-aroundtheus.png`)%>"
         alt="Around The US logo"
         class="header__logo"
       />
@@ -18,7 +18,7 @@
       <section class="profile">
         <div class="profile__left">
           <img
-            src="./images/jacques-cousteau.jpg"
+            src="<%=require(`./images/jacques-cousteau.jpg`)%>"
             alt="jacques cousteau profile image"
             class="profile__avatar"
           />
@@ -29,14 +29,14 @@
         </div>
         <button type="button" class="profile__edit">
           <img
-            src="./images/profile-edit-pencil-icon.svg"
+            src="<%=require(`./images/profile-edit-pencil-icon.svg`)%>"
             alt="profile edit icon pencil"
             class="profile__icon-pencil"
           />
         </button>
         <button type="button" class="profile__add" id="add-button">
           <img
-            src="./images/gallery-add-image-plus.svg"
+            src="<%=require(`./images/gallery-add-image-plus.svg`)%>"
             alt="gallery add image plus"
             class="profile__icon-plus"
           />
@@ -52,7 +52,7 @@
           >
             <img
               class="modal__close-img"
-              src="./images/modal-close.svg"
+              src="<%=require(`./images/modal-close.svg`)%>"
               alt="close button icon"
             />
           </button>
@@ -92,7 +92,7 @@
           >
             <img
               class="modal__close-img"
-              src="./images/modal-close.svg"
+              src="<%=require(`./images/modal-close.svg`)%>"
               alt="close button icon"
             />
           </button>
@@ -137,7 +137,7 @@
           >
             <img
               class="modal__close-img"
-              src="./images/modal-close.svg"
+              src="<%=require(`./images/modal-close.svg`)%>"
               alt="close button icon"
             />
           </button>
@@ -153,12 +153,12 @@
               <button type="button" class="card__delete">
                 <img
                   class="card__trashtop-icon"
-                  src="./images/trashcan-top.svg"
+                  src="<%=require(`./images/trashcan-top.svg`)%>"
                   alt="top of trash can icon"
                 />
                 <img
                   class="card__trashbottom-icon"
-                  src="./images/trashcan-bottom.svg"
+                  src="<%=require(`./images/trashcan-bottom.svg`)%>"
                   alt="bottom of trash can icon"
                 />
               </button>
@@ -167,7 +167,7 @@
                 <h2 class="card__title"></h2>
                 <button type="button" class="card__heart">
                   <img
-                    src="./images/cards-heart-button.svg"
+                    src="<%=require(`./images/cards-heart-button.svg`)%>"
                     class="card__button"
                     alt="heart-icon"
                   />

@@ -1,11 +1,12 @@
-import { imagePopup } from "../scripts/constants";
+import { initialCards } from "../scripts/constants";
+import Popup from "../components/Popup.js";
 
 class PopupWithImage extends Popup {
   constructor(popupSelector) {
     super(popupSelector);
   }
 
-  open({ link, name }) {
+  open() {
     const modalImageElement = document.querySelector(".modal__image");
     modalImageElement.src = this.link;
     modalImageElement.alt = `Photo of ${this.name}`;

@@ -35,7 +35,6 @@ const modalDescriptionInput = profileForm.querySelector(
   ".modal__input_description"
 );
 const popups = document.querySelectorAll(".modal");
-const closeButtons = document.querySelectorAll(".modal__close");
 
 const cardAddPopup = document.querySelector("#add-card-modal");
 const cardAddButton = document.querySelector("#add-button");
@@ -54,7 +53,6 @@ export {
   modalTitleInput,
   modalDescriptionInput,
   popups,
-  closeButtons,
   cardAddPopup,
   cardAddButton,
   cardAddForm,

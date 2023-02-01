@@ -1,4 +1,5 @@
 import { popups, profileForm } from "../scripts/constants";
+import Popup from "../components/Popup.js";
 
 class PopupWithForm extends Popup {
   constructor(data, popupSelector) {
