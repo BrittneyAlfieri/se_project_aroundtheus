@@ -1,18 +1,15 @@
-import { openPopup } from "./utils.js";
-import { imagePopup } from "./constants.js";
-
-class Card {
-  constructor(cardData, cardSelector) {
+export default class Card {
+  constructor({ cardData, handleCardClick }, cardSelector) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
-    const cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
+    const cardElement = document.querySelector(this._cardSelector);
+    cardElement.clonenode(true);
+    cardElement.content(".card");
 
     return cardElement;
   }
@@ -21,9 +18,9 @@ class Card {
     this._element = this._getTemplate();
     this._setEventListenersCard();
     const imageElement = this._element.querySelector(".card__image");
-    imageElement.src = this._link;
-    imageElement.alt = `Photo of ${this._name}`;
-    this._element.querySelector(".card__title").textContent = this._name;
+    imageElement.src = cardData.link;
+    imageElement.alt = `Photo of ${cardData._name}`;
+    this._element.querySelector(".card__title").textContent = cardData.name;
 
     return this._element;
   }
@@ -39,7 +36,9 @@ class Card {
 
     this._element
       .querySelector(".card__image")
-      .addEventListener("click", () => this._handleImagePreview(this));
+      .addEventListener("click", () =>
+        this._handleCardClick({ name: this._text, src: this._link })
+      );
   }
 
   _handleLikeButton() {
@@ -51,14 +50,4 @@ class Card {
   _handleDeleteButton = () => {
     this._element.remove();
   };
-
-  _handleImagePreview() {
-    openPopup(imagePopup);
-    const modalImageElement = document.querySelector(".modal__image");
-    modalImageElement.src = this._link;
-    modalImageElement.alt = `Photo of ${this._name}`;
-    document.querySelector(".modal__image-title").textContent = this._name;
-  }
 }
-
-export default Card;

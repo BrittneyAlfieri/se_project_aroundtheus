@@ -1,23 +1,26 @@
-import { popups, profileForm } from "../scripts/constants";
 import Popup from "../components/Popup.js";
 
-class PopupWithForm extends Popup {
-  constructor(data, popupSelector) {
+export default class PopupWithForm extends Popup {
+  constructor(popupSelector, handleSubmit) {
     super(popupSelector);
-    this.data = data;
   }
-  _getInputValues() {}
+  _getInputValues() {
+    this._inputElements = [
+      ...this._popupSelector.querySelectorAll(".modal__input"),
+    ];
+    let inputValues = {};
 
-  setEventListeners() {
-    profileForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      this._getInputValues();
+    this._inputElements.forEach((input) => {
+      inputValues[input.name] = input.textContent;
     });
 
-    cardAddForm.addEventListener("submit", function (event) {
+    return inputValues;
+  }
+
+  setEventListeners() {
+    this._popupSelector.addEventListener("submit", (event) => {
       event.preventDefault();
-      this._getInputValues();
-      renderCard(cardData);
+      handleSubmit(inputValues);
       this.close();
     });
   }

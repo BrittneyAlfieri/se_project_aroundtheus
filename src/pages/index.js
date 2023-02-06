@@ -1,96 +1,59 @@
 import "../pages/index.css";
-import FormValidator from "../scripts/FormValidator";
-import Card from "../scripts/Card.js";
-import { closePopup, openPopup, closeByEscape } from "../scripts/utils";
-import {
-  profileEditOpen,
-  profileForm,
-  profileEditTitle,
-  profileEditDescription,
-  modalEditPopup,
-  modalTitleInput,
-  modalDescriptionInput,
-  popups,
-  closeButtons,
-  cardAddPopup,
-  cardAddButton,
-  cardAddForm,
-  initialCards,
-  cardNameValue,
-  cardLinkValue,
-} from "../scripts/constants.js";
+import { initialCards, containerSelectors } from "../utils/constants";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import UserInfo from "../components/UserInfo";
 
-// popups.forEach((popup) => {
-//   popup.addEventListener("mousedown", (evt) => {
-//     if (evt.target.classList.contains("modal_opened")) {
-//       closePopup(popup);
-//     }
-//   });
-// });
+const profileForm = new PopupWithForm(
+  containerSelectors.profileEditForm,
+  (values) => {}
+);
+const cardPreview = new PopupWithImage(containerSelectors.previewPopup);
+const containerSelector = new Section(
+  {
+    renderer: (cardData) => {
+      const cardEl = new Card(
+        {
+          cardData,
+          handleCardClick: (imageData) => {
+            cardPreview.open(imageData);
+          },
+        },
+        containerSelectors.cardSelector
+      );
+      containerSelector.additem(cardEl.getCardView());
+    },
+  },
+  containerSelectors.cardSection
+);
 
-// closeButtons.forEach((button) => {
-//   const popup = button.closest(".modal");
+containerSelector.renderItems(initialCards);
+cardPreview.setEventListeners();
+profileForm.setUserInfo(values);
 
-//   button.addEventListener("click", () => closePopup(popup));
-// });
+const newUserInfo = {
+  name: "",
+  job: "",
+};
 
-profileEditOpen.addEventListener("click", function () {
-  modalTitleInput.value = profileEditTitle.textContent;
-  modalDescriptionInput.value = profileEditDescription.textContent;
+const userName = document.querySelector(".profile__title");
+const userJob = document.querySelector(".profile__subtitle");
+const userInfo = new UserInfo(userName, userJob);
 
-  openPopup(modalEditPopup);
-});
+userInfo.setUserInfo(newUserInfo);
 
-cardAddButton.addEventListener("click", function () {
-  openPopup(cardAddPopup);
-});
-
-profileForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
+profileEditOpen.addEventListener("click", function (event) {
   const titleValue = event.target.title.value;
   const descriptionValue = event.target.description.value;
 
   profileEditTitle.textContent = titleValue;
   profileEditDescription.textContent = descriptionValue;
 
-  closePopup(modalEditPopup);
+  this.open();
 });
 
-cardAddForm.addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const cardData = { name: cardNameValue.value, link: cardLinkValue.value };
-
-  renderCard(cardData);
-
-  closePopup(cardAddPopup);
-
-  cardAddForm.reset();
+cardAddButton.addEventListener("click", function () {
+  this.open();
 });
-
-initialCards.forEach((cardData) => {
-  renderCard(cardData);
-});
-
-function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template");
-  document.querySelector(".gallery__cards").prepend(card.getCardView());
-}
-
-const validationConfig = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input_error",
-  errorClass: "modal__error_visible",
-};
-
-const editFormElement = modalEditPopup.querySelector(".modal__container");
-const cardFormElement = cardAddPopup.querySelector(".modal__container");
-
-const editFormValidator = new FormValidator(validationConfig, editFormElement);
-const cardFormValidator = new FormValidator(validationConfig, cardFormElement);
-
-editFormValidator.enableValidation();
-cardFormValidator.enableValidation();

@@ -1,9 +1,9 @@
-import { popups } from "../scripts/constants";
+import { popups } from "../utils/constants";
 
-class Popup {
+export default class Popup {
   constructor(popupSelector) {
-    this._popupSelector = document.querySelector(`.${popupSelector}`);
-    this._closeButton = this._popupSelector.querySelector(".modal__close");
+    this._element = document.querySelector(popupSelector);
+    this._closeButton = document.querySelector(".modal__close");
   }
 
   open() {
@@ -16,15 +16,15 @@ class Popup {
     popups.addEventListener("keydown", this._handleEscClose);
   }
 
-  _handleEscClose() {
+  _handleEscClose(evt) {
     if (evt.key === "Escape") {
       const openedPopup = document.querySelector(".modal_opened");
-      this.close(openedPopup);
+      this.close();
     }
   }
 
   _setEventListeners() {
-    this._popupSelector.addEventListener("mousedown", (evt) => {
+    this._element.addEventListener("mousedown", (evt) => {
       if (evt.target.classList.contains("modal_opened")) {
         this.close();
       }
@@ -33,4 +33,3 @@ class Popup {
     this._closeButton.addEventListener("click", () => this.close());
   }
 }
-export default Popup;

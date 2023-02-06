@@ -25,6 +25,13 @@ const initialCards = [
   },
 ];
 
+const containerSelectors = {
+  cardSection: ".gallery__cards",
+  cardSelector: "card-template",
+  previewPopup: "image-modal",
+  profileEditForm: "#edit-modal",
+};
+
 const profileEditOpen = document.querySelector(".profile__edit");
 const profileForm = document.querySelector("#modal-profile-form");
 const profileEditTitle = document.querySelector(".profile__title");
@@ -59,4 +66,5 @@ export {
   imagePopup,
   cardNameValue,
   cardLinkValue,
+  containerSelectors,
 };
