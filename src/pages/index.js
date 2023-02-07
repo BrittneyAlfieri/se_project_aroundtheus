@@ -6,10 +6,16 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo";
 
+const userInfo = new UserInfo(userName, userJob);
+
 const profileForm = new PopupWithForm(
   containerSelectors.profileEditForm,
-  (values) => {}
+  (values) => {
+    userInfo.setUserInfo(values);
+    profileForm.close();
+  }
 );
+
 const cardPreview = new PopupWithImage(containerSelectors.previewPopup);
 const containerSelector = new Section(
   {
@@ -31,16 +37,14 @@ const containerSelector = new Section(
 
 containerSelector.renderItems(initialCards);
 cardPreview.setEventListeners();
-profileForm.setUserInfo(values);
+profileForm.setEventListeners();
 
 const newUserInfo = {
   name: "",
   job: "",
 };
-
 const userName = document.querySelector(".profile__title");
 const userJob = document.querySelector(".profile__subtitle");
-const userInfo = new UserInfo(userName, userJob);
 
 userInfo.setUserInfo(newUserInfo);
 
