@@ -1,10 +1,22 @@
 import "../pages/index.css";
-import { initialCards, containerSelectors } from "../utils/constants";
+import {
+  initialCards,
+  containerSelectors,
+  profileEditOpen,
+  cardAddButton,
+} from "../utils/constants";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo";
+
+const newUserInfo = {
+  name: "",
+  job: "",
+};
+const userName = document.querySelector(".profile__title");
+const userJob = document.querySelector(".profile__subtitle");
 
 const userInfo = new UserInfo(userName, userJob);
 
@@ -24,40 +36,28 @@ const containerSelector = new Section(
         {
           cardData,
           handleCardClick: (imageData) => {
+            console.log(imageData);
             cardPreview.open(imageData);
           },
         },
         containerSelectors.cardSelector
       );
-      containerSelector.additem(cardEl.getCardView());
+
+      containerSelector.addItem(cardEl.getCardView());
     },
   },
   containerSelectors.cardSection
 );
 
 containerSelector.renderItems(initialCards);
-cardPreview.setEventListeners();
+cardPreview.open();
 profileForm.setEventListeners();
-
-const newUserInfo = {
-  name: "",
-  job: "",
-};
-const userName = document.querySelector(".profile__title");
-const userJob = document.querySelector(".profile__subtitle");
-
 userInfo.setUserInfo(newUserInfo);
 
-profileEditOpen.addEventListener("click", function (event) {
-  const titleValue = event.target.title.value;
-  const descriptionValue = event.target.description.value;
-
-  profileEditTitle.textContent = titleValue;
-  profileEditDescription.textContent = descriptionValue;
-
-  this.open();
+profileEditOpen.addEventListener("click", function () {
+  profileForm.open();
 });
 
 cardAddButton.addEventListener("click", function () {
-  this.open();
+  profileForm.open();
 });

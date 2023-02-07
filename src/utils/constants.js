@@ -27,8 +27,8 @@ const initialCards = [
 
 const containerSelectors = {
   cardSection: ".gallery__cards",
-  cardSelector: "card-template",
-  previewPopup: "image-modal",
+  cardSelector: "#card-template",
+  previewPopup: "#image-modal",
   profileEditForm: "#edit-modal",
 };
 
