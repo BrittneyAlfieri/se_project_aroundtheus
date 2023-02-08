@@ -6,7 +6,6 @@ export default class PopupWithImage extends Popup {
   }
 
   open(cardData) {
-    console.log(cardData);
     const modalImageElement = this._element.querySelector(".modal__image");
     const modalImageTitle = this._element.querySelector(".modal__image-title");
 

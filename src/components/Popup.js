@@ -1,3 +1,5 @@
+import { popups } from "../utils/constants";
+
 export default class Popup {
   constructor(popupSelector) {
     this._element = document.querySelector(popupSelector);
@@ -29,7 +31,5 @@ export default class Popup {
     });
 
     this._closeButton.addEventListener("click", () => this.close());
-
-    console.log("click");
   }
 }

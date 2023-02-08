@@ -29,22 +29,19 @@ export default class Card {
     this._element
       .querySelector(".card__button")
       .addEventListener("click", () => this._handleLikeButton(this));
-    console.log(this._element.querySelector(".card__image"));
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () =>
         this._handleCardClick({ name: this._name, link: this._link })
       );
-    console.log({ name: this._name, link: this._link });
   }
 
   _handleLikeButton() {
-    this._element
-      .querySelector(".card__button")
-      .classList.toggle("card__heart_active");
+    this._element.querySelector(".card__button").classList("card__heart_active")
+      .toggle;
   }
 
   _handleDeleteButton = () => {
-    this._element.remove();
+    this._element.remove;
   };
 }

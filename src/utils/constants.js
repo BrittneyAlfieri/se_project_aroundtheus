@@ -30,6 +30,7 @@ const containerSelectors = {
   cardSelector: "#card-template",
   previewPopup: "#image-modal",
   profileEditForm: "#edit-modal",
+  cardAddForm: "#add-card-modal",
 };
 
 const profileEditOpen = document.querySelector(".profile__edit");
