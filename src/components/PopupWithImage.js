@@ -13,6 +13,8 @@ export default class PopupWithImage extends Popup {
     modalImageElement.alt = `Photo of ${cardData.name}`;
     modalImageTitle.textContent = cardData.name;
 
+    super.setEventListeners();
+
     super.open();
   }
 }

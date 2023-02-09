@@ -24,7 +24,7 @@ const userInfo = new UserInfo(userName, userJob);
 const profileForm = new PopupWithForm(
   containerSelectors.profileEditForm,
   (values) => {
-    userInfo.getUserInfo(values);
+    userInfo.setUserInfo(values);
     profileForm.close();
   }
 );
@@ -40,9 +40,11 @@ const validationConfig = {
   inputErrorClass: "modal__input_error",
   errorClass: "modal__error_visible",
 };
+const editFormElement = document.querySelector("#modal-profile-form");
+const cardFormElement = document.querySelector("#add-card-form");
 
-const editFormValidator = new FormValidator(validationConfig, profileForm);
-const cardFormValidator = new FormValidator(validationConfig, cardForm);
+const editFormValidator = new FormValidator(validationConfig, editFormElement);
+const cardFormValidator = new FormValidator(validationConfig, cardFormElement);
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
@@ -55,7 +57,6 @@ const containerSelector = new Section(
         {
           cardData,
           handleCardClick: (imageData) => {
-            console.log(imageData);
             cardPreview.open(imageData);
           },
         },
@@ -68,11 +69,11 @@ const containerSelector = new Section(
   containerSelectors.cardSection
 );
 
-containerSelector.renderItems(initialCards);
-
-cardForm.setEventListeners();
-userInfo.setUserInfo(newUserInfo);
 profileForm.setEventListeners();
+containerSelector.renderItems(initialCards);
+cardForm.setEventListeners();
+
+userInfo.setUserInfo(newUserInfo);
 
 profileEditOpen.addEventListener("click", function () {
   profileForm.open();

@@ -1,7 +1,6 @@
 class FormValidator {
   constructor(config, formElement) {
     this._form = formElement;
-    console.log(this._form);
     this._inputSelector = config.inputSelector;
     this._submitButtonSelector = config.submitButtonSelector;
     this._inactiveButtonClass = config.inactiveButtonClass;
@@ -46,6 +45,14 @@ class FormValidator {
     }
   };
 
+  _toggleErrorMessage = (inputElement) => {
+    if (!this._checkFormValidity()) {
+      this._showInputError(inputElement);
+    } else {
+      this._hideInputError(inputElement);
+    }
+  };
+
   _checkFormValidity = () =>
     this._inputElements.every((input) => input.validity.valid);
 
@@ -59,7 +66,7 @@ class FormValidator {
 
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (event) => {
-        this._checkFormValidity();
+        this._checkFormValidity(this._toggleErrorMessage(inputElement));
         this.toggleButtonState();
       });
     });

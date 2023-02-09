@@ -7,7 +7,9 @@ export default class Card {
   }
 
   _getTemplate() {
-    return document.querySelector(this._cardSelector).cloneNode(true).content;
+    return document
+      .querySelector(this._cardSelector)
+      .content.firstElementChild.cloneNode(true);
   }
 
   getCardView() {
@@ -37,11 +39,12 @@ export default class Card {
   }
 
   _handleLikeButton() {
-    this._element.querySelector(".card__button").classList("card__heart_active")
-      .toggle;
+    this._element
+      .querySelector(".card__button")
+      .classList.toggle("card__heart_active");
   }
 
   _handleDeleteButton = () => {
-    this._element.remove;
+    this._element.remove();
   };
 }
