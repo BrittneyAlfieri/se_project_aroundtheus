@@ -12,14 +12,10 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo";
 import FormValidator from "../scripts/FormValidator";
 
-const newUserInfo = {
-  name: "",
-  job: "",
-};
-const userName = document.querySelector(".profile__title");
-const userJob = document.querySelector(".profile__subtitle");
+const { nameSelector } = document.querySelector(".profile__title");
+const { jobSelector } = document.querySelector(".profile__subtitle");
 
-const userInfo = new UserInfo(userName, userJob);
+const userInfo = new UserInfo({ nameSelector, jobSelector });
 
 const profileForm = new PopupWithForm(
   containerSelectors.profileEditForm,
@@ -30,6 +26,7 @@ const profileForm = new PopupWithForm(
 );
 
 const cardForm = new PopupWithForm(containerSelectors.cardAddForm, () => {
+  cardForm.renderCard();
   cardForm.close();
 });
 
@@ -50,20 +47,26 @@ editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
 const cardPreview = new PopupWithImage(containerSelectors.previewPopup);
+cardPreview.setEventListeners();
+
+const renderCard = (cardData) => {
+  const cardEl = new Card(
+    {
+      cardData,
+      handleCardClick: (imageData) => {
+        cardPreview.open(imageData);
+      },
+    },
+    containerSelectors.cardSelector
+  );
+};
+
 const containerSelector = new Section(
   {
-    renderer: (cardData) => {
-      const cardEl = new Card(
-        {
-          cardData,
-          handleCardClick: (imageData) => {
-            cardPreview.open(imageData);
-          },
-        },
-        containerSelectors.cardSelector
-      );
+    renderer: renderCard,
 
-      containerSelector.addItem(cardEl.getCardView());
+    handleFormSubmit: (item) => {
+      renderCard(item);
     },
   },
   containerSelectors.cardSection
@@ -73,9 +76,8 @@ profileForm.setEventListeners();
 containerSelector.renderItems(initialCards);
 cardForm.setEventListeners();
 
-userInfo.setUserInfo(newUserInfo);
-
 profileEditOpen.addEventListener("click", function () {
+  userInfo.getUserInfo();
   profileForm.open();
 });
 

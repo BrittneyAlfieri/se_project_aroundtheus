@@ -16,9 +16,10 @@ export default class Card {
     this._element = this._getTemplate();
     this._setEventListenersCard();
     const imageElement = this._element.querySelector(".card__image");
+    const imageTitle = this._element.querySelector(".card__title");
     imageElement.src = this._link;
     imageElement.alt = `Photo of ${this._name}`;
-    this._element.querySelector(".card__title").textContent = this._name;
+    imageTitle.textContent = this._name;
 
     return this._element;
   }
@@ -26,11 +27,11 @@ export default class Card {
   _setEventListenersCard() {
     this._element
       .querySelector(".card__delete")
-      .addEventListener("click", () => this._handleDeleteButton(this));
+      .addEventListener("click", () => this._handleDeleteButton());
 
     this._element
       .querySelector(".card__button")
-      .addEventListener("click", () => this._handleLikeButton(this));
+      .addEventListener("click", () => this._handleLikeButton());
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () =>
@@ -46,5 +47,6 @@ export default class Card {
 
   _handleDeleteButton = () => {
     this._element.remove();
+    this._element = null;
   };
 }
