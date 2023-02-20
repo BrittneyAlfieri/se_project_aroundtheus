@@ -27,14 +27,18 @@
           <h1 class="profile__title">Jacques Cousteau</h1>
           <p class="profile__subtitle">Explorer</p>
         </div>
-        <button type="button" class="profile__edit">
+        <button type="button" class="profile__button profile__edit">
           <img
             src="<%=require(`./images/profile-edit-pencil-icon.svg`)%>"
             alt="profile edit icon pencil"
             class="profile__icon-pencil"
           />
         </button>
-        <button type="button" class="profile__add" id="add-button">
+        <button
+          type="button"
+          class="profile__button profile__add"
+          id="add-button"
+        >
           <img
             src="<%=require(`./images/gallery-add-image-plus.svg`)%>"
             alt="gallery add image plus"
@@ -101,9 +105,8 @@
             class="modal__input modal__input_name"
             id="card-name"
             type="text"
-            name="title"
+            name="name"
             placeholder="Title"
-            tas
             minlength="1"
             maxlength="30"
             required
@@ -118,13 +121,7 @@
             required
           />
           <span class="modal__error" id="card-description-error"></span>
-          <button
-            class="modal__button modal__button_disabled"
-            type="submit"
-            disabled
-          >
-            Create
-          </button>
+          <button class="modal__button" type="submit" disabled>Create</button>
         </form>
       </div>
 

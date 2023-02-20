@@ -46,7 +46,7 @@ class FormValidator {
   };
 
   _toggleErrorMessage = (inputElement) => {
-    if (!this._checkFormValidity()) {
+    if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
     } else {
       this._hideInputError(inputElement);
@@ -59,8 +59,13 @@ class FormValidator {
   _setEventListeners() {
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
+    const openButton = document.querySelector(".profile__button");
 
     this._form.addEventListener("reset", () => {
+      this._disableButton();
+    });
+
+    openButton.addEventListener("click", () => {
       this._disableButton();
     });
 

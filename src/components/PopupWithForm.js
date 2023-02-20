@@ -22,6 +22,11 @@ export default class PopupWithForm extends Popup {
       event.preventDefault();
       this._handleSubmit(this._getInputValues());
     });
+
+    const editFormButton = document.querySelector(".profile__button");
+    editFormButton.addEventListener("click", () => {
+      this._getInputValues();
+    });
   }
 
   close() {

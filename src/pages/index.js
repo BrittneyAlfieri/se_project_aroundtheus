@@ -12,8 +12,8 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo";
 import FormValidator from "../scripts/FormValidator";
 
-const { nameSelector } = document.querySelector(".profile__title");
-const { jobSelector } = document.querySelector(".profile__subtitle");
+const nameSelector = ".profile__title";
+const jobSelector = ".profile__subtitle";
 
 const userInfo = new UserInfo({ nameSelector, jobSelector });
 
@@ -25,8 +25,8 @@ const profileForm = new PopupWithForm(
   }
 );
 
-const cardForm = new PopupWithForm(containerSelectors.cardAddForm, () => {
-  cardForm.renderCard();
+const cardForm = new PopupWithForm(containerSelectors.cardAddForm, (values) => {
+  renderCard(values);
   cardForm.close();
 });
 
@@ -59,15 +59,12 @@ const renderCard = (cardData) => {
     },
     containerSelectors.cardSelector
   );
+  containerSelector.addItem(cardEl.getCardView());
 };
 
 const containerSelector = new Section(
   {
     renderer: renderCard,
-
-    handleFormSubmit: (item) => {
-      renderCard(item);
-    },
   },
   containerSelectors.cardSection
 );
@@ -76,11 +73,12 @@ profileForm.setEventListeners();
 containerSelector.renderItems(initialCards);
 cardForm.setEventListeners();
 
-profileEditOpen.addEventListener("click", function () {
-  userInfo.getUserInfo();
+profileEditOpen.addEventListener("click", (values) => {
+  userInfo.getUserInfo(values);
+  console.log(userInfo.getUserInfo());
   profileForm.open();
 });
 
-cardAddButton.addEventListener("click", function () {
+cardAddButton.addEventListener("click", () => {
   cardForm.open();
 });
