@@ -73,20 +73,13 @@ profileForm.setEventListeners();
 containerSelector.renderItems(initialCards);
 cardForm.setEventListeners();
 
-profileEditOpen.addEventListener("click", (values) => {
-  //get current user info (HINT: getUserInfo())
-  //get both profile input elements
-  //set the value of each input (HINT:input.value = 'newValue')
+profileEditOpen.addEventListener("click", () => {
+  const user = userInfo.getUserInfo();
+  const nameFormInput = document.querySelector("#profile-name");
+  const jobFormInput = document.querySelector("#profile-description");
 
-  userInfo.getUserInfo(values);
-  console.log(userInfo.getUserInfo(values));
-  const nameFormInput = document.querySelector("profile-name");
-  const jobFormInput = document.querySelector("profile-description");
-
-  nameFormInput.value = name;
-  jobFormInput.value = job;
-  console.log(name);
-  console.log(nameFormInput.value);
+  nameFormInput.value = user.name;
+  jobFormInput.value = user.job;
 
   profileForm.open();
 });
