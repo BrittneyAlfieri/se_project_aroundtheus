@@ -85,5 +85,6 @@ profileEditOpen.addEventListener("click", () => {
 });
 
 cardAddButton.addEventListener("click", () => {
+  cardFormValidator.disableButton();
   cardForm.open();
 });

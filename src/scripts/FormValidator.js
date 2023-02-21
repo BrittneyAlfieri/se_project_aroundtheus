@@ -26,7 +26,7 @@ class FormValidator {
     errorMessageElement.classList.remove(this._errorClass);
   }
 
-  _disableButton() {
+  disableButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
@@ -41,7 +41,7 @@ class FormValidator {
     if (isFormValid) {
       this._enableButton();
     } else {
-      this._disableButton();
+      this.disableButton();
     }
   };
 
@@ -59,15 +59,6 @@ class FormValidator {
   _setEventListeners() {
     this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._inputElements = [...this._form.querySelectorAll(this._inputSelector)];
-    const openButton = document.querySelector(".profile__button");
-
-    this._form.addEventListener("reset", () => {
-      this._disableButton();
-    });
-
-    openButton.addEventListener("click", () => {
-      this._disableButton();
-    });
 
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (event) => {
