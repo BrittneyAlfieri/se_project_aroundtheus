@@ -11,6 +11,17 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo";
 import FormValidator from "../scripts/FormValidator";
+import Api from "../components/Api.js";
+
+const api = new Api({
+  baseurl: "https://around.nomoreparties.co/v1/group-12",
+  headers: {
+    authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
+    "Content-Type": "application/json",
+  },
+});
+
+api.getinitialCards();
 
 const nameSelector = ".profile__title";
 const jobSelector = ".profile__subtitle";
