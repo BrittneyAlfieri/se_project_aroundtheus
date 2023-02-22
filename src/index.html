@@ -125,6 +125,24 @@
         </form>
       </div>
 
+      <div class="modal" id="confirm-delete-modal">
+        <div class="modal__confirm-container" id="confirm-delete-container">
+          <button
+            class="modal__close modal__confirm-close"
+            id="confirm-delete-close-button"
+            type="button"
+          >
+            <img
+              class="modal__close-img"
+              src="<%=require(`./images/modal-close.svg`)%>"
+              alt="close button icon"
+            />
+          </button>
+          <p class="modal__title">Are you sure?</p>
+          <button class="modal__delete-confirm" type="button">yes</button>
+        </div>
+      </div>
+
       <div class="modal" id="image-modal">
         <div class="modal__image-container" id="image-template">
           <button
