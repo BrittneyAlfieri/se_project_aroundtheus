@@ -21,7 +21,7 @@ const api = new Api({
   },
 });
 
-api.getinitialCards();
+api.getInfo();
 
 const nameSelector = ".profile__title";
 const jobSelector = ".profile__subtitle";

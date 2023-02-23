@@ -50,3 +50,7 @@ export default class Card {
     this._element = null;
   };
 }
+
+//trash can button should open popup
+//popup then needs to be confirmed
+//then card trash can deleted
