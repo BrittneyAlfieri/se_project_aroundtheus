@@ -1,6 +1,5 @@
 import "../pages/index.css";
 import {
-  initialCards,
   containerSelectors,
   profileEditOpen,
   cardAddButton,
@@ -21,17 +20,24 @@ const api = new Api({
   },
 });
 
-api.getInfo();
+api.getInitialCards().then((cards) => {
+  containerSelector.renderItems(cards);
+});
+
+// api.getAppInfo().then((cards, userInfo) => {
+//   containerSelector.renderItems(cards);
+// });
 
 const nameSelector = ".profile__title";
-const jobSelector = ".profile__subtitle";
+const aboutSelector = ".profile__subtitle";
 
-const userInfo = new UserInfo({ nameSelector, jobSelector });
+const userInfo = new UserInfo({ nameSelector, aboutSelector });
 
 const profileForm = new PopupWithForm(
   containerSelectors.profileEditForm,
   (values) => {
     userInfo.setUserInfo(values);
+
     profileForm.close();
   }
 );
@@ -81,16 +87,15 @@ const containerSelector = new Section(
 );
 
 profileForm.setEventListeners();
-containerSelector.renderItems(initialCards);
 cardForm.setEventListeners();
 
 profileEditOpen.addEventListener("click", () => {
   const user = userInfo.getUserInfo();
   const nameFormInput = document.querySelector("#profile-name");
-  const jobFormInput = document.querySelector("#profile-description");
+  const aboutFormInput = document.querySelector("#profile-description");
 
   nameFormInput.value = user.name;
-  jobFormInput.value = user.job;
+  aboutFormInput.value = user.about;
 
   profileForm.open();
 });

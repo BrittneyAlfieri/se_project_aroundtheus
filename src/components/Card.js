@@ -2,6 +2,7 @@ export default class Card {
   constructor({ cardData, handleCardClick }, cardSelector) {
     this._name = cardData.name;
     this._link = cardData.link;
+    this._likes = cardData.likes;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -17,9 +18,12 @@ export default class Card {
     this._setEventListenersCard();
     const imageElement = this._element.querySelector(".card__image");
     const imageTitle = this._element.querySelector(".card__title");
+    const cardLikes = this._element.querySelector(".card__like-counter");
     imageElement.src = this._link;
     imageElement.alt = `Photo of ${this._name}`;
     imageTitle.textContent = this._name;
+    cardLikes.textContent = this._likes;
+    console.log(this._likes);
 
     return this._element;
   }
@@ -45,12 +49,12 @@ export default class Card {
       .classList.toggle("card__heart_active");
   }
 
+  _getCardLikes() {
+    //search array for card likes
+    //classlist add "card__like-counter" class when heart gets toggled
+  }
+
   _handleDeleteButton = () => {
-    this._element.remove();
-    this._element = null;
+    const popupConfirmation = document.querySelector("#confirm-delete-modal");
   };
 }
-
-//trash can button should open popup
-//popup then needs to be confirmed
-//then card trash can deleted

@@ -180,13 +180,16 @@
               <img class="card__image" src=" " alt=" " />
               <div class="card__info">
                 <h2 class="card__title"></h2>
-                <button type="button" class="card__heart">
-                  <img
-                    src="<%=require(`./images/cards-heart-button.svg`)%>"
-                    class="card__button"
-                    alt="heart-icon"
-                  />
-                </button>
+                <div class="card__like-tally">
+                  <button type="button" class="card__heart">
+                    <img
+                      src="<%=require(`./images/cards-heart-button.svg`)%>"
+                      class="card__button"
+                      alt="heart-icon"
+                    />
+                  </button>
+                  <p class="card__like-counter"></p>
+                </div>
               </div>
             </div>
           </template>
