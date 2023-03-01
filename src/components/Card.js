@@ -1,9 +1,10 @@
 export default class Card {
-  constructor({ cardData, handleCardClick }, cardSelector) {
+  constructor({ cardData, userId, handleCardClick }, cardSelector) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._likes = cardData.likes;
-    this._userId = cardData.userId;
+    this._userId = userId;
+    this._userCardId = cardData["owner"]._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -24,6 +25,12 @@ export default class Card {
     imageElement.alt = `Photo of ${this._name}`;
     imageTitle.textContent = this._name;
     imageLikes.textContent = this._likes.length;
+
+    if (this._userCardId === this._userId) {
+      this._element.classList.add(".card__delete");
+    } else {
+      this._element.classList.remove(".card__delete");
+    }
 
     return this._element;
   }
@@ -56,9 +63,4 @@ export default class Card {
 
     //this._element.remove();
   }
-
-  //create a function
-  //loop through cards array for each card for card Id number that is in server
-  //if that matches user id number then add trash bin class
-  //else remove trash bin class
 }

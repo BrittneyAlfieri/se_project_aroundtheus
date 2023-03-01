@@ -71,10 +71,13 @@ cardFormValidator.enableValidation();
 const cardPreview = new PopupWithImage(containerSelectors.previewPopup);
 cardPreview.setEventListeners();
 
+let userId;
+
 const renderCard = (cardData) => {
   const cardEl = new Card(
     {
       cardData,
+      userId: userId,
       handleCardClick: (imageData) => {
         cardPreview.open(imageData);
       },
@@ -110,8 +113,15 @@ cardAddButton.addEventListener("click", () => {
   cardForm.open();
 });
 
-profileAvatar.addEventListener("mouseover", () => {});
+profileAvatar.addEventListener("mouseover", (event) => {
+  if (event.target === "mouseover") {
+    profileAvatar.classList.add(".profile__avatar_edit");
+  } else {
+    profileAvatar.classList.remove(".profile__avatar_edit");
+  }
+});
 
 api.getAppInfo().then(([cards, userData]) => {
+  userId = userData._id;
   containerSelector.renderItems(cards), userInfo.setUserInfo(userData);
 });
