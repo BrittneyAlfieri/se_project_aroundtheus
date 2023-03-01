@@ -4,11 +4,13 @@ const containerSelectors = {
   previewPopup: "#image-modal",
   profileEditForm: "#edit-modal",
   cardAddForm: "#add-card-modal",
+  confirmPopup: "#confirm-delete-modal",
 };
 
 const profileEditOpen = document.querySelector(".profile__edit");
 const profileForm = document.querySelector("#modal-profile-form");
 const profileEditTitle = document.querySelector(".profile__title");
+const profileAvatar = document.querySelector(".profile__avatar");
 const profileEditDescription = document.querySelector(".profile__subtitle");
 const modalEditPopup = document.querySelector("#edit-modal");
 const modalTitleInput = profileForm.querySelector(".modal__input_name");
@@ -40,4 +42,5 @@ export {
   cardNameValue,
   cardLinkValue,
   containerSelectors,
+  profileAvatar,
 };

@@ -76,7 +76,7 @@
             class="modal__input modal__input_description"
             id="profile-description"
             type="text"
-            name="job"
+            name="about"
             placeholder="Description"
             minlength="2"
             maxlength="200"
@@ -126,10 +126,10 @@
       </div>
 
       <div class="modal" id="confirm-delete-modal">
-        <div class="modal__confirm-container" id="confirm-delete-container">
+        <form class="modal__confirm-container" id="confirm-delete-form">
           <button
             class="modal__close modal__confirm-close"
-            id="confirm-delete-close-button"
+            id="card-close-button"
             type="button"
           >
             <img
@@ -138,9 +138,9 @@
               alt="close button icon"
             />
           </button>
-          <p class="modal__title">Are you sure?</p>
-          <button class="modal__delete-confirm" type="button">yes</button>
-        </div>
+          <p class="modal__confirm-title">Are you sure?</p>
+          <button class="modal__button" type="submit" disabled>Yes</button>
+        </form>
       </div>
 
       <div class="modal" id="image-modal">

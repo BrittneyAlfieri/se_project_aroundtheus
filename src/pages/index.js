@@ -3,6 +3,7 @@ import {
   containerSelectors,
   profileEditOpen,
   cardAddButton,
+  profileAvatar,
 } from "../utils/constants";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -11,6 +12,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo";
 import FormValidator from "../scripts/FormValidator";
 import Api from "../components/Api.js";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 const api = new Api({
   baseurl: "https://around.nomoreparties.co/v1/group-12",
@@ -20,30 +22,33 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  containerSelector.renderItems(cards);
-});
-
-// api.getAppInfo().then((cards, userInfo) => {
-//   containerSelector.renderItems(cards);
-// });
-
 const nameSelector = ".profile__title";
 const aboutSelector = ".profile__subtitle";
 
 const userInfo = new UserInfo({ nameSelector, aboutSelector });
 
+const popupConfirm = new PopupWithConfirm(
+  containerSelectors.confirmPopup,
+  () => {
+    popupConfirm.close();
+  }
+);
+
 const profileForm = new PopupWithForm(
   containerSelectors.profileEditForm,
   (values) => {
-    userInfo.setUserInfo(values);
+    api.patchProfileData(values).then((data) => {
+      userInfo.setUserInfo(data);
+    });
 
     profileForm.close();
   }
 );
 
 const cardForm = new PopupWithForm(containerSelectors.cardAddForm, (values) => {
-  renderCard(values);
+  api.addNewCard(values).then((data) => {
+    renderCard(data);
+  });
   cardForm.close();
 });
 
@@ -103,4 +108,10 @@ profileEditOpen.addEventListener("click", () => {
 cardAddButton.addEventListener("click", () => {
   cardFormValidator.disableButton();
   cardForm.open();
+});
+
+profileAvatar.addEventListener("mouseover", () => {});
+
+api.getAppInfo().then(([cards, userData]) => {
+  containerSelector.renderItems(cards), userInfo.setUserInfo(userData);
 });
