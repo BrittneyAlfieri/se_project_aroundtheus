@@ -27,12 +27,9 @@ const aboutSelector = ".profile__subtitle";
 
 const userInfo = new UserInfo({ nameSelector, aboutSelector });
 
-const popupConfirm = new PopupWithConfirm(
-  containerSelectors.confirmPopup,
-  () => {
-    popupConfirm.close();
-  }
-);
+const popupConfirm = new PopupWithConfirm(containerSelectors.confirmPopup);
+
+popupConfirm.setEventListeners();
 
 const profileForm = new PopupWithForm(
   containerSelectors.profileEditForm,
@@ -81,6 +78,26 @@ const renderCard = (cardData) => {
       handleCardClick: (imageData) => {
         cardPreview.open(imageData);
       },
+      handleDeleteClick: (cardId) => {
+        popupConfirm.open();
+        popupConfirm.setSubmitAction(() => {
+          api.deleteCard(cardId).then(() => {
+            popupConfirm.close();
+            cardEl.removeCard();
+          });
+        });
+      },
+      handleLikeClick: (userId, cardLikeId) => {
+        if (this._likes !== this._userId) {
+          api.addCardLike(userId, cardLikeId).then(() => {
+            addLike();
+          });
+        }
+      },
+      //call this handleLikeClick:
+      // pass cardId, to handleLikeClick and api.AddCardLike
+      // write a statement that if the user id doesnt match card likes id call api.addCardLike & addLike function
+      // write statement that if the user id does match one of the card likes ids call api.removeCardLike & removeLike function
     },
     containerSelectors.cardSelector
   );

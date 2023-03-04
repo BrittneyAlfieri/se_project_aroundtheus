@@ -73,4 +73,58 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
+
+  deleteCard(cardId) {
+    return fetch(
+      `https://around.nomoreparties.co/v1/group-12/cards/${cardId}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
+  addCardLike(cardId) {
+    return fetch(
+      `https://around.nomoreparties.co/v1/group-12/cards/likes/${cardId}`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+
+  removeCardLike(cardId) {
+    return fetch(
+      `https://around.nomoreparties.co/v1/group-12/cards/likes/${cardId}`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
+          "Content-Type": "application/json",
+        },
+      }
+    ).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
 }

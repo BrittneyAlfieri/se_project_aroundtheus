@@ -13,7 +13,7 @@ const profileEditTitle = document.querySelector(".profile__title");
 const profileAvatar = document.querySelector(".profile__avatar");
 const profileEditDescription = document.querySelector(".profile__subtitle");
 const modalEditPopup = document.querySelector("#edit-modal");
-const modalTitleInput = profileForm.querySelector(".modal__input_name");
+
 const modalDescriptionInput = profileForm.querySelector(
   ".modal__input_description"
 );
@@ -32,7 +32,6 @@ export {
   profileEditTitle,
   profileEditDescription,
   modalEditPopup,
-  modalTitleInput,
   modalDescriptionInput,
   popups,
   cardAddPopup,

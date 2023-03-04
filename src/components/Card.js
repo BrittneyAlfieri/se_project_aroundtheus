@@ -1,12 +1,18 @@
 export default class Card {
-  constructor({ cardData, userId, handleCardClick }, cardSelector) {
+  constructor(
+    { cardData, userId, handleCardClick, handleDeleteClick },
+    cardSelector
+  ) {
     this._name = cardData.name;
     this._link = cardData.link;
+    this._id = cardData._id;
     this._likes = cardData.likes;
+    console.log(this._likes);
     this._userId = userId;
     this._userCardId = cardData["owner"]._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
+    this._handleDeleteClick = handleDeleteClick;
   }
 
   _getTemplate() {
@@ -27,9 +33,13 @@ export default class Card {
     imageLikes.textContent = this._likes.length;
 
     if (this._userCardId === this._userId) {
-      this._element.classList.add(".card__delete");
+      this._element
+        .querySelector(".card__delete")
+        .classList.add("card__delete_visible");
     } else {
-      this._element.classList.remove(".card__delete");
+      this._element
+        .querySelector(".card__delete")
+        .classList.remove("card__delete_visible");
     }
 
     return this._element;
@@ -38,11 +48,11 @@ export default class Card {
   _setEventListenersCard() {
     this._element
       .querySelector(".card__delete")
-      .addEventListener("click", () => this._handleDeleteButton());
+      .addEventListener("click", () => this._handleDeleteClick(this._id));
 
     this._element
       .querySelector(".card__button")
-      .addEventListener("click", () => this._handleLikeButton());
+      .addEventListener("click", () => this._handleLikeClick());
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () =>
@@ -50,17 +60,29 @@ export default class Card {
       );
   }
 
-  _handleLikeButton() {
-    this._element
-      .querySelector(".card__button")
-      .classList.toggle("card__heart_active");
+  // _handleLikeButton() {
+  //   this._element
+  //     .querySelector(".card__button")
+  //     .classList.toggle("card__heart_active");
+  // }
+
+  addLike() {
+    if (this._likes !== this._userId) {
+      this._element
+        .querySelector(".card__button")
+        .classList.add("card__heart_active");
+    }
   }
 
-  _handleDeleteButton() {
-    const popupConfirmPopup = document
-      .querySelector("#confirm-delete-modal")
-      .classList.add("modal_opened");
+  removeLike() {
+    if (this._likes === this._userId) {
+      this._element
+        .querySelector(".card__button")
+        .classList.remove("card__heart_active");
+    }
+  }
 
-    //this._element.remove();
+  removeCard() {
+    this._element.remove();
   }
 }
