@@ -1,18 +1,18 @@
 export default class Card {
   constructor(
-    { cardData, userId, handleCardClick, handleDeleteClick },
+    { cardData, userId, handleCardClick, handleDeleteClick, handleLikeClick },
     cardSelector
   ) {
     this._name = cardData.name;
     this._link = cardData.link;
     this._id = cardData._id;
     this._likes = cardData.likes;
-    console.log(this._likes);
     this._userId = userId;
     this._userCardId = cardData["owner"]._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -60,29 +60,42 @@ export default class Card {
       );
   }
 
-  // _handleLikeButton() {
-  //   this._element
-  //     .querySelector(".card__button")
-  //     .classList.toggle("card__heart_active");
-  // }
+  removeCard() {
+    this._element.remove();
+  }
 
-  addLike() {
-    if (this._likes !== this._userId) {
+  isLiked() {
+    //1.loop over the array of likes
+    //2. if the current like object has an ID that equals this._userId, then return true
+    // else
+    // remove the filled in heart
+    this._likes.forEach((like) => {
+      console.log(this._likes);
+      if (like._id === this._userId) {
+        console.log(this._userId);
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
+  setLikesInfo(data) {
+    //update this._likes with the new likes array
+
+    this._setLikesAppearance();
+  }
+
+  _setLikesAppearance() {
+    //update likes counter
+    if (isLiked === true) {
       this._element
         .querySelector(".card__button")
         .classList.add("card__heart_active");
-    }
-  }
-
-  removeLike() {
-    if (this._likes === this._userId) {
+    } else {
       this._element
         .querySelector(".card__button")
         .classList.remove("card__heart_active");
     }
-  }
-
-  removeCard() {
-    this._element.remove();
   }
 }

@@ -92,9 +92,9 @@ export default class Api {
     });
   }
 
-  addCardLike(cardId) {
+  addCardLike(likesId) {
     return fetch(
-      `https://around.nomoreparties.co/v1/group-12/cards/likes/${cardId}`,
+      `https://around.nomoreparties.co/v1/group-12/cards/likes/${likesId}`,
       {
         method: "PUT",
         headers: {
@@ -110,9 +110,9 @@ export default class Api {
     });
   }
 
-  removeCardLike(cardId) {
+  removeCardLike(likesId) {
     return fetch(
-      `https://around.nomoreparties.co/v1/group-12/cards/likes/${cardId}`,
+      `https://around.nomoreparties.co/v1/group-12/cards/likes/${likesId}`,
       {
         method: "DELETE",
         headers: {
