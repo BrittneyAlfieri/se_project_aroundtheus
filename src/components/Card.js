@@ -52,7 +52,7 @@ export default class Card {
 
     this._element
       .querySelector(".card__button")
-      .addEventListener("click", () => this._handleLikeClick());
+      .addEventListener("click", () => this._handleLikeClick(this._id));
     this._element
       .querySelector(".card__image")
       .addEventListener("click", () =>
@@ -65,30 +65,20 @@ export default class Card {
   }
 
   isLiked() {
-    //1.loop over the array of likes
-    //2. if the current like object has an ID that equals this._userId, then return true
-    // else
-    // remove the filled in heart
-    this._likes.forEach((like) => {
-      console.log(this._likes);
-      if (like._id === this._userId) {
-        console.log(this._userId);
-        return true;
-      } else {
-        return false;
-      }
-    });
+    return this._likes.some((like) => like._id === this._userId);
   }
 
-  setLikesInfo(data) {
-    //update this._likes with the new likes array
+  setLikesInfo(likes) {
+    this._likes = likes;
 
     this._setLikesAppearance();
   }
 
   _setLikesAppearance() {
-    //update likes counter
-    if (isLiked === true) {
+    const imageLikes = this._element.querySelector(".card__like-counter");
+    imageLikes.textContent = this._likes.length;
+
+    if (this.isLiked()) {
       this._element
         .querySelector(".card__button")
         .classList.add("card__heart_active");

@@ -5,6 +5,7 @@ const containerSelectors = {
   profileEditForm: "#edit-modal",
   cardAddForm: "#add-card-modal",
   confirmPopup: "#confirm-delete-modal",
+  avatarImageForm: "edit-avatar-image",
 };
 
 const profileEditOpen = document.querySelector(".profile__edit");

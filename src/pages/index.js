@@ -87,17 +87,17 @@ const renderCard = (cardData) => {
           });
         });
       },
-      handleLikeClick: (userId, cardLikeId) => {
-        if (this._likes !== this._userId) {
-          api.addCardLike(userId, cardLikeId).then(() => {
-            addLike();
+      handleLikeClick: (cardId) => {
+        if (cardEl.isLiked()) {
+          api.removeCardLike(cardId).then((data) => {
+            cardEl.setLikesInfo(data.likes);
+          });
+        } else {
+          api.addCardLike(cardId).then((data) => {
+            cardEl.setLikesInfo(data.likes);
           });
         }
       },
-      //call this handleLikeClick:
-      // pass cardId, to handleLikeClick and api.AddCardLike
-      // write a statement that if the user id doesnt match card likes id call api.addCardLike & addLike function
-      // write statement that if the user id does match one of the card likes ids call api.removeCardLike & removeLike function
     },
     containerSelectors.cardSelector
   );
