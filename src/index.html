@@ -16,9 +16,9 @@
 
     <main>
       <section class="profile">
-        <div class="profile__left">
+        <button class="profile__left" type="button">
           <img
-            src="<%=require(`./images/jacques-cousteau.jpg`)%>"
+            src=" "
             alt="jacques cousteau profile image"
             class="profile__avatar"
           />
@@ -27,7 +27,7 @@
             alt="profile edit avatar"
             class="profile__avatar-pencil"
           />
-        </div>
+        </button>
         <div class="profile__center">
           <h1 class="profile__title">Jacques Cousteau</h1>
           <p class="profile__subtitle">Explorer</p>
@@ -130,8 +130,11 @@
         </form>
       </div>
 
-      <div class="modal" id="add-card-modal">
-        <form class="modal__container" id="add-card-form">
+      <div class="modal" id="edit-avatar-image">
+        <form
+          class="modal__avatar-container modal__container"
+          id="edit-avatar-form"
+        >
           <button
             class="modal__close modal__card-close"
             id="card-close-button"
@@ -143,9 +146,9 @@
               alt="close button icon"
             />
           </button>
-          <p class="modal__title">Change profile <picture></picture></p>
+          <p class="modal__avatar-title">Change profile picture</p>
           <input
-            class="modal__input modal__input_description"
+            class="modal__input modal__avatar-link"
             id="card-description"
             type="url"
             name="link"

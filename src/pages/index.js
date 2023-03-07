@@ -24,8 +24,20 @@ const api = new Api({
 
 const nameSelector = ".profile__title";
 const aboutSelector = ".profile__subtitle";
+const avatarSelector = ".profile__avatar";
 
-const userInfo = new UserInfo({ nameSelector, aboutSelector });
+const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
+
+const avatarEditForm = new PopupWithForm(
+  containerSelectors.avatarImageForm,
+  (values) => {
+    console.log(values.link);
+    api.patchProfileImage(values.link).then((data) => {
+      userInfo.setUserInfo(data);
+    });
+    avatarEditForm.close();
+  }
+);
 
 const popupConfirm = new PopupWithConfirm(containerSelectors.confirmPopup);
 
@@ -58,12 +70,18 @@ const validationConfig = {
 };
 const editFormElement = document.querySelector("#modal-profile-form");
 const cardFormElement = document.querySelector("#add-card-form");
+const avatarFormElement = document.querySelector("#edit-avatar-image");
 
 const editFormValidator = new FormValidator(validationConfig, editFormElement);
 const cardFormValidator = new FormValidator(validationConfig, cardFormElement);
+const avatarFormValidator = new FormValidator(
+  validationConfig,
+  avatarFormElement
+);
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+avatarFormValidator.enableValidation();
 
 const cardPreview = new PopupWithImage(containerSelectors.previewPopup);
 cardPreview.setEventListeners();
@@ -113,6 +131,7 @@ const containerSelector = new Section(
 
 profileForm.setEventListeners();
 cardForm.setEventListeners();
+avatarEditForm.setEventListeners();
 
 profileEditOpen.addEventListener("click", () => {
   const user = userInfo.getUserInfo();
@@ -130,12 +149,8 @@ cardAddButton.addEventListener("click", () => {
   cardForm.open();
 });
 
-profileAvatar.addEventListener("mouseover", (event) => {
-  if (event.target === "mouseover") {
-    profileAvatar.classList.add(".profile__avatar_edit");
-  } else {
-    profileAvatar.classList.remove(".profile__avatar_edit");
-  }
+profileAvatar.addEventListener("click", () => {
+  avatarEditForm.open();
 });
 
 api.getAppInfo().then(([cards, userData]) => {

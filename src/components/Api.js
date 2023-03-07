@@ -128,7 +128,7 @@ export default class Api {
     });
   }
 
-  patchProfileImage({ avatar }) {
+  patchProfileImage(avatar) {
     return fetch(
       "https://around.nomoreparties.co/v1/group-12/users/me/avatar",
       {

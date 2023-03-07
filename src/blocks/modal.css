@@ -231,6 +231,51 @@
   cursor: pointer;
 }
 
+.modal__avatar-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-top: 195px;
+  width: 430px;
+  height: 272px;
+  background-color: #fff;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+.modal__avatar-title {
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-top: 34px;
+  margin-bottom: 0;
+  min-width: 358px;
+
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.2;
+  color: #111;
+}
+
+.modal__avatar-link {
+  margin-left: 35px;
+  margin-right: 35px;
+  margin-top: 54px;
+  padding-bottom: 13px;
+  min-width: 358px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
 @media screen and (min-width: 320px) and (max-width: 768px) {
   .modal__container {
     max-width: 282px;
