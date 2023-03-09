@@ -31,11 +31,19 @@ const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
 const avatarEditForm = new PopupWithForm(
   containerSelectors.avatarImageForm,
   (values) => {
-    console.log(values.link);
-    api.patchProfileImage(values.link).then((data) => {
-      userInfo.setUserInfo(data);
-    });
-    avatarEditForm.close();
+    avatarEditForm.setLoading(true);
+    api
+      .patchProfileImage(values.link)
+      .then((data) => {
+        userInfo.setUserInfo(data);
+        avatarEditForm.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        avatarEditForm.setLoading(false, "Save");
+      });
   }
 );
 
@@ -46,19 +54,36 @@ popupConfirm.setEventListeners();
 const profileForm = new PopupWithForm(
   containerSelectors.profileEditForm,
   (values) => {
-    api.patchProfileData(values).then((data) => {
-      userInfo.setUserInfo(data);
-    });
-
-    profileForm.close();
+    profileForm.setLoading(true);
+    api
+      .patchProfileData(values)
+      .then((data) => {
+        userInfo.setUserInfo(data);
+        profileForm.close();
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => {
+        profileForm.setLoading(false, "Save");
+      });
   }
 );
 
 const cardForm = new PopupWithForm(containerSelectors.cardAddForm, (values) => {
-  api.addNewCard(values).then((data) => {
-    renderCard(data);
-  });
-  cardForm.close();
+  cardForm.setLoading(true);
+  api
+    .addNewCard(values)
+    .then((data) => {
+      renderCard(data);
+      cardForm.close();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      cardForm.setLoading(false, "Create");
+    });
 });
 
 const validationConfig = {
