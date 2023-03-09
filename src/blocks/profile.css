@@ -11,9 +11,7 @@
   position: relative;
   background-color: transparent;
   border: none;
-
   padding: 0;
-
   justify-content: flex-start;
   margin-right: 30px;
 }
@@ -155,8 +153,6 @@
     font-style: normal;
     font-size: 14px;
     margin-top: 14px;
-    align-self: center;
-
     max-width: 282px;
   }
 
