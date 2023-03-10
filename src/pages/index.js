@@ -4,6 +4,9 @@ import {
   profileEditOpen,
   cardAddButton,
   profileAvatar,
+  avatarSelector,
+  aboutSelector,
+  nameSelector,
 } from "../utils/constants";
 import Card from "../components/Card.js";
 import Section from "../components/Section.js";
@@ -21,10 +24,6 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-
-const nameSelector = ".profile__title";
-const aboutSelector = ".profile__subtitle";
-const avatarSelector = ".profile__avatar";
 
 const userInfo = new UserInfo({ nameSelector, aboutSelector, avatarSelector });
 
@@ -124,21 +123,36 @@ const renderCard = (cardData) => {
       handleDeleteClick: (cardId) => {
         popupConfirm.open();
         popupConfirm.setSubmitAction(() => {
-          api.deleteCard(cardId).then(() => {
-            popupConfirm.close();
-            cardEl.removeCard();
-          });
+          api
+            .deleteCard(cardId)
+            .then(() => {
+              popupConfirm.close();
+              cardEl.removeCard();
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         });
       },
       handleLikeClick: (cardId) => {
         if (cardEl.isLiked()) {
-          api.removeCardLike(cardId).then((data) => {
-            cardEl.setLikesInfo(data.likes);
-          });
+          api
+            .removeCardLike(cardId)
+            .then((data) => {
+              cardEl.setLikesInfo(data.likes);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         } else {
-          api.addCardLike(cardId).then((data) => {
-            cardEl.setLikesInfo(data.likes);
-          });
+          api
+            .addCardLike(cardId)
+            .then((data) => {
+              cardEl.setLikesInfo(data.likes);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       },
     },
@@ -175,6 +189,7 @@ cardAddButton.addEventListener("click", () => {
 });
 
 profileAvatar.addEventListener("click", () => {
+  avatarFormValidator.disableButton();
   avatarEditForm.open();
 });
 

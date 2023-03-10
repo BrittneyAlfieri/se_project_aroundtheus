@@ -42,6 +42,16 @@ export default class Card {
         .classList.remove("card__delete_visible");
     }
 
+    if (this.isLiked()) {
+      this._element
+        .querySelector(".card__button")
+        .classList.add("card__heart_active");
+    } else {
+      this._element
+        .querySelector(".card__button")
+        .classList.remove("card__heart_active");
+    }
+
     return this._element;
   }
 

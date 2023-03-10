@@ -1,35 +1,28 @@
 export default class Api {
-  constructor() {}
+  constructor({ baseurl, headers }) {
+    this._baseUrl = baseurl;
+    this._headers = headers;
+  }
+
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error ${res.status}`);
+  }
 
   getUserInfo() {
-    return fetch("https://around.nomoreparties.co/v1/group-12/users/me", {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "GET",
-
-      headers: {
-        authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Error: ${res.status}`);
-    });
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
   getInitialCards() {
-    return fetch("https://around.nomoreparties.co/v1/group-12/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "GET",
-      headers: {
-        authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Error: ${res.status}`);
-    });
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
   getAppInfo() {
@@ -37,115 +30,55 @@ export default class Api {
   }
 
   patchProfileData({ name, about }) {
-    return fetch("https://around.nomoreparties.co/v1/group-12/users/me", {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name,
         about,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   addNewCard({ name, link }) {
-    return fetch("https://around.nomoreparties.co/v1/group-12/cards", {
+    return fetch(`${this._baseUrl}/cards`, {
       method: "POST",
-      headers: {
-        authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name,
         link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    }).then(this._checkResponse);
   }
 
   deleteCard(cardId) {
-    return fetch(
-      `https://around.nomoreparties.co/v1/group-12/cards/${cardId}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
   addCardLike(cardId) {
-    return fetch(
-      `https://around.nomoreparties.co/v1/group-12/cards/likes/${cardId}`,
-      {
-        method: "PUT",
-        headers: {
-          authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
   removeCardLike(cardId) {
-    return fetch(
-      `https://around.nomoreparties.co/v1/group-12/cards/likes/${cardId}`,
-      {
-        method: "DELETE",
-        headers: {
-          authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-          "Content-Type": "application/json",
-        },
-      }
-    ).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
 
   patchProfileImage(avatar) {
-    return fetch(
-      "https://around.nomoreparties.co/v1/group-12/users/me/avatar",
-      {
-        method: "PATCH",
-        headers: {
-          authorization: "4bdff29d-c843-4001-843a-f9e5eda05fad",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          avatar,
-        }),
-      }
-    ).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar,
+      }),
+    }).then(this._checkResponse);
   }
 }

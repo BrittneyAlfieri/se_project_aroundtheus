@@ -27,6 +27,10 @@ const cardAddForm = document.querySelector("#add-card-form");
 const cardNameValue = cardAddPopup.querySelector(".modal__input_name");
 const cardLinkValue = cardAddPopup.querySelector(".modal__input_description");
 
+const nameSelector = ".profile__title";
+const aboutSelector = ".profile__subtitle";
+const avatarSelector = ".profile__avatar";
+
 export {
   profileEditOpen,
   profileForm,
@@ -43,4 +47,7 @@ export {
   cardLinkValue,
   containerSelectors,
   profileAvatar,
+  avatarSelector,
+  aboutSelector,
+  nameSelector,
 };
